@@ -8,6 +8,11 @@
 
 import UIKit
 
+/*
+ This represents the feedback scene after taking a photo.
+ The sees now if the picture was accepted.
+*/
+
 class FeedbackViewController : UIViewController {
     
     required init?(coder aDecoder: NSCoder) {

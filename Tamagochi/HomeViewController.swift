@@ -8,6 +8,10 @@
 
 import UIKit
 
+/*
+ This represents the main scene. The Tamagotchi is shown here.
+ The user should be triggered to take a picture.
+ */
 class HomeViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     var imagePicker: UIImagePickerController!
 
@@ -31,13 +35,11 @@ class HomeViewController: UIViewController, UINavigationControllerDelegate, UIIm
         // TODO: store the image & hand the image over to CoreML engine
         
         // go to the FeedbackView
-        
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let feedbackViewController = storyBoard.instantiateViewController(withIdentifier: "feedbackViewController") as! FeedbackViewController
         feedbackViewController.inputImage = info[.originalImage] as? UIImage
         self.present(feedbackViewController, animated: true, completion: nil)
-        
     }
-    
+
 }
 

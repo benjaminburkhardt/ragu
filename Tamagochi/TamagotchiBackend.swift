@@ -7,3 +7,11 @@
 //
 
 import Foundation
+
+/*
+ Backend functionality for the Tamagotchi
+*/
+
+class TamagotchiBackend {
+    
+}
