@@ -9,21 +9,25 @@
 /* Begin PBXBuildFile section */
 		BE9C62DB237986170088E1AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9C62DA237986170088E1AB /* AppDelegate.swift */; };
 		BE9C62DD237986170088E1AB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9C62DC237986170088E1AB /* SceneDelegate.swift */; };
-		BE9C62DF237986170088E1AB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9C62DE237986170088E1AB /* ViewController.swift */; };
+		BE9C62DF237986170088E1AB /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9C62DE237986170088E1AB /* HomeViewController.swift */; };
 		BE9C62E2237986170088E1AB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE9C62E0237986170088E1AB /* Main.storyboard */; };
 		BE9C62E4237986190088E1AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE9C62E3237986190088E1AB /* Assets.xcassets */; };
 		BE9C62E7237986190088E1AB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE9C62E5237986190088E1AB /* LaunchScreen.storyboard */; };
+		BE9C62EF2379C3570088E1AB /* FeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9C62EE2379C3570088E1AB /* FeedbackViewController.swift */; };
+		BE9C62F12379C39C0088E1AB /* TamagotchiBackend.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9C62F02379C39C0088E1AB /* TamagotchiBackend.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		BE9C62D7237986170088E1AB /* Tamagochi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tamagochi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE9C62DA237986170088E1AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BE9C62DC237986170088E1AB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		BE9C62DE237986170088E1AB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		BE9C62DE237986170088E1AB /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		BE9C62E1237986170088E1AB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BE9C62E3237986190088E1AB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BE9C62E6237986190088E1AB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BE9C62E8237986190088E1AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BE9C62EE2379C3570088E1AB /* FeedbackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackViewController.swift; sourceTree = "<group>"; };
+		BE9C62F02379C39C0088E1AB /* TamagotchiBackend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TamagotchiBackend.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,11 +62,13 @@
 			children = (
 				BE9C62DA237986170088E1AB /* AppDelegate.swift */,
 				BE9C62DC237986170088E1AB /* SceneDelegate.swift */,
-				BE9C62DE237986170088E1AB /* ViewController.swift */,
+				BE9C62DE237986170088E1AB /* HomeViewController.swift */,
 				BE9C62E0237986170088E1AB /* Main.storyboard */,
 				BE9C62E3237986190088E1AB /* Assets.xcassets */,
 				BE9C62E5237986190088E1AB /* LaunchScreen.storyboard */,
 				BE9C62E8237986190088E1AB /* Info.plist */,
+				BE9C62EE2379C3570088E1AB /* FeedbackViewController.swift */,
+				BE9C62F02379C39C0088E1AB /* TamagotchiBackend.swift */,
 			);
 			path = Tamagochi;
 			sourceTree = "<group>";
@@ -138,9 +144,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BE9C62DF237986170088E1AB /* ViewController.swift in Sources */,
+				BE9C62DF237986170088E1AB /* HomeViewController.swift in Sources */,
 				BE9C62DB237986170088E1AB /* AppDelegate.swift in Sources */,
 				BE9C62DD237986170088E1AB /* SceneDelegate.swift in Sources */,
+				BE9C62F12379C39C0088E1AB /* TamagotchiBackend.swift in Sources */,
+				BE9C62EF2379C3570088E1AB /* FeedbackViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
