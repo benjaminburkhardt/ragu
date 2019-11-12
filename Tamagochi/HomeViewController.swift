@@ -32,12 +32,13 @@ class HomeViewController: UIViewController, UINavigationControllerDelegate, UIIm
         imagePicker.dismiss(animated: true, completion: nil)
 
         print("Image was taken!")
-        // TODO: store the image & hand the image over to CoreML engine
         
-        // go to the FeedbackView
+        let inputImage = info[.originalImage] as! UIImage
+        
+        // go to the FeedbackViewController
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let feedbackViewController = storyBoard.instantiateViewController(withIdentifier: "feedbackViewController") as! FeedbackViewController
-        feedbackViewController.inputImage = info[.originalImage] as? UIImage
+        feedbackViewController.inputImage = inputImage
         self.present(feedbackViewController, animated: true, completion: nil)
     }
 

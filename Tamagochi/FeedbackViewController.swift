@@ -14,18 +14,20 @@ import UIKit
 */
 
 class FeedbackViewController : UIViewController {
-    
-    required init?(coder aDecoder: NSCoder) {
-        
-        super.init(coder: aDecoder)
-    }
-    
+
     var inputImage : UIImage?
+    var imageClassification : ImageClassification = ImageClassification()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        imageViewer.image = inputImage
+
+        if inputImage != nil{
+            imageViewer.image = inputImage!
+            imageClassification.updateClassifications(for: inputImage!)
+        }else{
+            print("ERROR: No image passed for classification!")
+        }
     }
+    
     @IBOutlet weak var imageViewer: UIImageView!
 }
