@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7C77B383237ADF0F00A9F150 /* GlobalSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C77B382237ADF0E00A9F150 /* GlobalSettings.swift */; };
 		BE9C62DB237986170088E1AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9C62DA237986170088E1AB /* AppDelegate.swift */; };
 		BE9C62DD237986170088E1AB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9C62DC237986170088E1AB /* SceneDelegate.swift */; };
 		BE9C62DF237986170088E1AB /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9C62DE237986170088E1AB /* HomeViewController.swift */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7C77B382237ADF0E00A9F150 /* GlobalSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalSettings.swift; sourceTree = "<group>"; };
 		BE9C62D7237986170088E1AB /* Tamagochi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tamagochi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE9C62DA237986170088E1AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BE9C62DC237986170088E1AB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -65,6 +67,7 @@
 				BE9C62DE237986170088E1AB /* HomeViewController.swift */,
 				BE9C62E0237986170088E1AB /* Main.storyboard */,
 				BE9C62E3237986190088E1AB /* Assets.xcassets */,
+				7C77B382237ADF0E00A9F150 /* GlobalSettings.swift */,
 				BE9C62E5237986190088E1AB /* LaunchScreen.storyboard */,
 				BE9C62E8237986190088E1AB /* Info.plist */,
 				BE9C62EE2379C3570088E1AB /* FeedbackViewController.swift */,
@@ -149,6 +152,7 @@
 				BE9C62DD237986170088E1AB /* SceneDelegate.swift in Sources */,
 				BE9C62F12379C39C0088E1AB /* TamagotchiBackend.swift in Sources */,
 				BE9C62EF2379C3570088E1AB /* FeedbackViewController.swift in Sources */,
+				7C77B383237ADF0F00A9F150 /* GlobalSettings.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
