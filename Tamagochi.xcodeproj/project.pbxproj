@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BE102B6F237AAB1600242BF8 /* MobileNetV2.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = BE102B6E237AAB1600242BF8 /* MobileNetV2.mlmodel */; };
+		BE92208C237AC59800A049ED /* ImageClassification.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE92208B237AC59800A049ED /* ImageClassification.swift */; };
 		BE9C62DB237986170088E1AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9C62DA237986170088E1AB /* AppDelegate.swift */; };
 		BE9C62DD237986170088E1AB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9C62DC237986170088E1AB /* SceneDelegate.swift */; };
 		BE9C62DF237986170088E1AB /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9C62DE237986170088E1AB /* HomeViewController.swift */; };
@@ -18,6 +20,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BE102B6E237AAB1600242BF8 /* MobileNetV2.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = MobileNetV2.mlmodel; sourceTree = "<group>"; };
+		BE92208B237AC59800A049ED /* ImageClassification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageClassification.swift; sourceTree = "<group>"; };
 		BE9C62D7237986170088E1AB /* Tamagochi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tamagochi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE9C62DA237986170088E1AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BE9C62DC237986170088E1AB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -60,6 +64,7 @@
 		BE9C62D9237986170088E1AB /* Tamagochi */ = {
 			isa = PBXGroup;
 			children = (
+				BE102B6E237AAB1600242BF8 /* MobileNetV2.mlmodel */,
 				BE9C62DA237986170088E1AB /* AppDelegate.swift */,
 				BE9C62DC237986170088E1AB /* SceneDelegate.swift */,
 				BE9C62DE237986170088E1AB /* HomeViewController.swift */,
@@ -69,6 +74,7 @@
 				BE9C62E8237986190088E1AB /* Info.plist */,
 				BE9C62EE2379C3570088E1AB /* FeedbackViewController.swift */,
 				BE9C62F02379C39C0088E1AB /* TamagotchiBackend.swift */,
+				BE92208B237AC59800A049ED /* ImageClassification.swift */,
 			);
 			path = Tamagochi;
 			sourceTree = "<group>";
@@ -144,7 +150,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE102B6F237AAB1600242BF8 /* MobileNetV2.mlmodel in Sources */,
 				BE9C62DF237986170088E1AB /* HomeViewController.swift in Sources */,
+				BE92208C237AC59800A049ED /* ImageClassification.swift in Sources */,
 				BE9C62DB237986170088E1AB /* AppDelegate.swift in Sources */,
 				BE9C62DD237986170088E1AB /* SceneDelegate.swift in Sources */,
 				BE9C62F12379C39C0088E1AB /* TamagotchiBackend.swift in Sources */,
