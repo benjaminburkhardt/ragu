@@ -14,23 +14,23 @@ import UIKit
  */
 class HomeViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     var imagePicker: UIImagePickerController!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
-
+    
     @IBAction func scanButton(_ sender: UIButton) {
         imagePicker =  UIImagePickerController()
         imagePicker.delegate = self
         imagePicker.sourceType = .camera
-
+        
         present(imagePicker, animated: true, completion: nil)
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         imagePicker.dismiss(animated: true, completion: nil)
-
+        
         print("Image was taken!")
         
         let inputImage = info[.originalImage] as! UIImage
@@ -41,6 +41,6 @@ class HomeViewController: UIViewController, UINavigationControllerDelegate, UIIm
         feedbackViewController.inputImage = inputImage
         self.present(feedbackViewController, animated: true, completion: nil)
     }
-
+    
 }
 

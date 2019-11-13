@@ -14,6 +14,20 @@ import ImageIO
 class ImageClassification : UIViewController {
     // MARK: - Image Classification
     
+    var result : [String] = []
+    let controllerToNotify: FeedbackViewController!
+    
+    
+    init(controllerToNotify : FeedbackViewController) {
+        self.controllerToNotify = controllerToNotify
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    
     /// - Tag: MLModelSetup
     lazy var classificationRequest: VNCoreMLRequest = {
         do {
@@ -31,7 +45,9 @@ class ImageClassification : UIViewController {
     
     /// - Tag: PerformRequests
     func updateClassifications(for image: UIImage) {
-       print("Classifying...")
+        
+        print("Classifying...")
+        controllerToNotify.updateStatus(status: ImageStatus.processing)
         
         guard let orientation = CGImagePropertyOrientation(rawValue: UInt32(image.imageOrientation.rawValue)) else { fatalError("Could not get orientation of image.") }
         guard let ciImage = CIImage(image: image) else { fatalError("Unable to create \(CIImage.self) from \(image).") }
@@ -40,6 +56,8 @@ class ImageClassification : UIViewController {
             do {
                 let handler = VNImageRequestHandler(ciImage: ciImage, orientation: orientation)
                 try handler.perform([self.classificationRequest])
+                
+                
             } catch {
                 /*
                  This handler catches general image processing errors. The `classificationRequest`'s
@@ -56,14 +74,15 @@ class ImageClassification : UIViewController {
     func processClassifications(for request: VNRequest, error: Error?) {
         DispatchQueue.main.async {
             guard let results = request.results else {
-               print("Unable to classify image.\n\(error!.localizedDescription)")
+                print("Unable to classify image.\n\(error!.localizedDescription)")
                 return
             }
             // The `results` will always be `VNClassificationObservation`s, as specified by the Core ML model in this project.
             let classifications = results as! [VNClassificationObservation]
-        
+            
             if classifications.isEmpty {
-               print("Nothing recognized.")
+                print("Nothing recognized.")
+                self.controllerToNotify.updateStatus(status: ImageStatus.classificationFailed)
             } else {
                 // Display top classifications ranked by confidence in the UI.
                 let topXToCheck = 3
@@ -80,6 +99,11 @@ class ImageClassification : UIViewController {
                 
                 print(recognized)
                 print("Highest confidence: " , confidence)
+                
+                self.result = recognized
+                self.controllerToNotify.updateStatus(status: ImageStatus.classified)
+                
+                // TODO: Check a DB if this is healthy or not...
             }
         }
     }
