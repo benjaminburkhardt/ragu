@@ -54,6 +54,10 @@ class FeedbackViewController : UIViewController {
             statusLabel.text = "Classification failed..."
         }
     }
+    
+    @IBAction func closeButton(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
+    }
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var imageViewer: UIImageView!
 }
