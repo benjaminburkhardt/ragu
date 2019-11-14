@@ -5,7 +5,6 @@
 //  Created by Benjamin Burkhardt on 11/11/2019.
 //  Copyright © 2019 Ragu. All rights reserved.
 //
-
 import UIKit
 
 /*
@@ -15,10 +14,26 @@ import UIKit
 class HomeViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     var imagePicker: UIImagePickerController!
     
+    @IBOutlet weak var feedMeButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        view.backgroundColor = GlobalSettings.colors[0]
+        feedMeButton.backgroundColor = GlobalSettings.colors[4]
+        }
+    
+      
+    override func viewDidAppear(_ animated: Bool) {
+        let launchedBefore = UserDefaults.standard.bool(forKey: "launchedBefore")
+        if launchedBefore  {
+            print("Not first launch.")
+        } else {
+            print("First launch, setting UserDefault.")
+            UserDefaults.standard.set(true, forKey: "launchedBefore")
+            performSegue(withIdentifier: "tutorial", sender: nil)
+        }
     }
+    
     
     @IBAction func scanButton(_ sender: UIButton) {
         imagePicker =  UIImagePickerController()
@@ -43,4 +58,3 @@ class HomeViewController: UIViewController, UINavigationControllerDelegate, UIIm
     }
     
 }
-
