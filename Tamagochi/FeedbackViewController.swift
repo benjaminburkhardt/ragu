@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 /*
  This represents the feedback scene after taking a photo.
@@ -18,6 +19,9 @@ class FeedbackViewController : UIViewController {
     var inputImage : UIImage?
     private var imageClassification : ImageClassification!
     private var status = ImageStatus.unknown
+    
+    // CoreData
+    var container: NSPersistentContainer!
     
     
     override func viewDidLoad() {

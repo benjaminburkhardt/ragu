@@ -10,6 +10,7 @@
 		1283E519237D8A9800C53692 /* DisplayAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1283E518237D8A9800C53692 /* DisplayAnimation.swift */; };
 		1283E51B237D8AB900C53692 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 1283E51A237D8AB900C53692 /* art.scnassets */; };
 		7CD93985237D8E2E0020C35E /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD93984237D8E2E0020C35E /* UIViewExtension.swift */; };
+		BE2E9804237DF66F00A06BD6 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BE2E9802237DF66F00A06BD6 /* DataModel.xcdatamodeld */; };
 		BE9C62DB237986170088E1AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9C62DA237986170088E1AB /* AppDelegate.swift */; };
 		BE9C62DD237986170088E1AB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9C62DC237986170088E1AB /* SceneDelegate.swift */; };
 		BE9C62DF237986170088E1AB /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9C62DE237986170088E1AB /* HomeViewController.swift */; };
@@ -27,6 +28,7 @@
 		1283E518237D8A9800C53692 /* DisplayAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayAnimation.swift; sourceTree = "<group>"; };
 		1283E51A237D8AB900C53692 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
 		7CD93984237D8E2E0020C35E /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
+		BE2E9803237DF66F00A06BD6 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		BE9C62D7237986170088E1AB /* Tamagochi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tamagochi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE9C62DA237986170088E1AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BE9C62DC237986170088E1AB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -56,6 +58,7 @@
 		BE9C62CE237986170088E1AB = {
 			isa = PBXGroup;
 			children = (
+				BE2E9802237DF66F00A06BD6 /* DataModel.xcdatamodeld */,
 				BE9C62D9237986170088E1AB /* Tamagochi */,
 				BE9C62D8237986170088E1AB /* Products */,
 			);
@@ -163,6 +166,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE2E9804237DF66F00A06BD6 /* DataModel.xcdatamodeld in Sources */,
 				7CD93985237D8E2E0020C35E /* UIViewExtension.swift in Sources */,
 				BEC8EE45237AE3E000C58B14 /* MobileNetV2.mlmodel in Sources */,
 				1283E519237D8A9800C53692 /* DisplayAnimation.swift in Sources */,
@@ -370,6 +374,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		BE2E9802237DF66F00A06BD6 /* DataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				BE2E9803237DF66F00A06BD6 /* DataModel.xcdatamodel */,
+			);
+			currentVersion = BE2E9803237DF66F00A06BD6 /* DataModel.xcdatamodel */;
+			name = DataModel.xcdatamodeld;
+			path = Tamagochi/DataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = BE9C62CF237986170088E1AB /* Project object */;
 }

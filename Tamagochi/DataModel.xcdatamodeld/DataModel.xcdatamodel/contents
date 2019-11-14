@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15508" systemVersion="19B88" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="HealthStatus" representedClassName="HealthStatus" syncable="YES" codeGenerationType="class">
+        <attribute name="hungry" optional="YES" attributeType="Integer 16" minValueString="0" maxValueString="100" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="lastPhoto" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="thirsty" optional="YES" attributeType="Integer 16" minValueString="0" maxValueString="100" defaultValueString="0" usesScalarValueType="YES"/>
+    </entity>
+    <elements>
+        <element name="HealthStatus" positionX="-63" positionY="-18" width="128" height="88"/>
+    </elements>
+</model>

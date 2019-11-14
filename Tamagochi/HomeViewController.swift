@@ -6,6 +6,7 @@
 //  Copyright © 2019 Ragu. All rights reserved.
 //
 import UIKit
+import CoreData
 
 /*
  This represents the main scene. The Tamagotchi is shown here.
@@ -14,15 +15,25 @@ import UIKit
 class HomeViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     var imagePicker: UIImagePickerController!
     
+    // CoreData
+    var container: NSPersistentContainer!
+    
     @IBOutlet weak var feedMeButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
         view.backgroundColor = GlobalSettings.colors[0]
         feedMeButton.backgroundColor = GlobalSettings.colors[4]
+        
+        // CoreData setup
+        container = NSPersistentContainer(name: "DataModel")
+        
+        guard container != nil else {
+            fatalError("This view needs a persistent container.")
         }
+    }
     
-      
+    
     override func viewDidAppear(_ animated: Bool) {
         let launchedBefore = UserDefaults.standard.bool(forKey: "launchedBefore")
         if launchedBefore  {
@@ -32,6 +43,12 @@ class HomeViewController: UIViewController, UINavigationControllerDelegate, UIIm
             UserDefaults.standard.set(true, forKey: "launchedBefore")
             performSegue(withIdentifier: "tutorial", sender: nil)
         }
+        
+        // TODO: Access Core Data...
+        //        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "HealthStatus")
+        //        var context = NSManagedObjectContext(concurrencyType: NSManagedObjectContextConcurrencyType.mainQueueConcurrencyType)
+        //        print(container.managedObjectModel)
+        //        print(fetchRequest)
     }
     
     
@@ -55,6 +72,13 @@ class HomeViewController: UIViewController, UINavigationControllerDelegate, UIIm
         let feedbackViewController = storyBoard.instantiateViewController(withIdentifier: "feedbackViewController") as! FeedbackViewController
         feedbackViewController.inputImage = inputImage
         self.present(feedbackViewController, animated: true, completion: nil)
+    }
+    
+    /// MARK - Prepare stuff for the next ViewController
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let nextVC = segue.destination as? FeedbackViewController {
+            nextVC.container = container
+        }
     }
     
 }
