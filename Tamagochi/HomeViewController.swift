@@ -15,10 +15,26 @@ import UIKit
 class HomeViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     var imagePicker: UIImagePickerController!
     
+    @IBOutlet weak var feedMeButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        view.backgroundColor = GlobalSettings.colors[0]
+        feedMeButton.backgroundColor = GlobalSettings.colors[4]
+        }
+    
+      
+    override func viewDidAppear(_ animated: Bool) {
+        let launchedBefore = UserDefaults.standard.bool(forKey: "launchedBefore")
+        if launchedBefore  {
+            print("Not first launch.")
+        } else {
+            print("First launch, setting UserDefault.")
+            UserDefaults.standard.set(true, forKey: "launchedBefore")
+            performSegue(withIdentifier: "tutorial", sender: nil)
+        }
     }
+    
     
     @IBAction func scanButton(_ sender: UIButton) {
         imagePicker =  UIImagePickerController()

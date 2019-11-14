@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7C889C2F237D7443002A1348 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C889C2E237D7443002A1348 /* UIViewExtension.swift */; };
 		BE9C62DB237986170088E1AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9C62DA237986170088E1AB /* AppDelegate.swift */; };
 		BE9C62DD237986170088E1AB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9C62DC237986170088E1AB /* SceneDelegate.swift */; };
 		BE9C62DF237986170088E1AB /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9C62DE237986170088E1AB /* HomeViewController.swift */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7C889C2E237D7443002A1348 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		BE9C62D7237986170088E1AB /* Tamagochi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tamagochi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE9C62DA237986170088E1AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BE9C62DC237986170088E1AB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -78,6 +80,7 @@
 				BE9C62E8237986190088E1AB /* Info.plist */,
 				BE9C62EE2379C3570088E1AB /* FeedbackViewController.swift */,
 				BE9C62F02379C39C0088E1AB /* TamagotchiBackend.swift */,
+				7C889C2E237D7443002A1348 /* UIViewExtension.swift */,
 			);
 			path = Tamagochi;
 			sourceTree = "<group>";
@@ -159,6 +162,7 @@
 				BE9C62DB237986170088E1AB /* AppDelegate.swift in Sources */,
 				BE9C62DD237986170088E1AB /* SceneDelegate.swift in Sources */,
 				BEC8EE43237AE3D900C58B14 /* ImageClassification.swift in Sources */,
+				7C889C2F237D7443002A1348 /* UIViewExtension.swift in Sources */,
 				BE9C62F12379C39C0088E1AB /* TamagotchiBackend.swift in Sources */,
 				BE9C62EF2379C3570088E1AB /* FeedbackViewController.swift in Sources */,
 			);
