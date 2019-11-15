@@ -64,11 +64,11 @@ class HomeViewController: UIViewController, UINavigationControllerDelegate, UIIm
     
     
     @IBAction func scanButton(_ sender: UIButton) {
-//        imagePicker =  UIImagePickerController()
-//        imagePicker.delegate = self
-//        imagePicker.sourceType = .camera
-//
-//        present(imagePicker, animated: true, completion: nil)
+        imagePicker =  UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.sourceType = .camera
+
+        present(imagePicker, animated: true, completion: nil)
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
