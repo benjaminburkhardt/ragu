@@ -15,15 +15,21 @@ import CoreData
 class HomeViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     var imagePicker: UIImagePickerController!
     
+    // Connection to the Outlet in the Storyboard
+    @IBOutlet weak var thirstBar: UIView!
+    @IBOutlet weak var hungerBar: UIView!
+    @IBOutlet weak var journeyIcon: UILabel!
+    @IBOutlet weak var settingsIcon: UILabel!
+    @IBOutlet weak var feedMeButton: UIButton!
+    
     // CoreData
     var container: NSPersistentContainer!
     
-    @IBOutlet weak var feedMeButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = GlobalSettings.colors[0]
-        feedMeButton.backgroundColor = GlobalSettings.colors[4]
+        // Initializations of colors and fonts
+        InitializeOutlets()
         
         // CoreData setup
         container = NSPersistentContainer(name: "DataModel")
@@ -35,6 +41,8 @@ class HomeViewController: UIViewController, UINavigationControllerDelegate, UIIm
     
     
     override func viewDidAppear(_ animated: Bool) {
+        
+        // Check if it's the first launch of the app to show the Tutorial
         let launchedBefore = UserDefaults.standard.bool(forKey: "launchedBefore")
         if launchedBefore  {
             print("Not first launch.")
@@ -43,6 +51,9 @@ class HomeViewController: UIViewController, UINavigationControllerDelegate, UIIm
             UserDefaults.standard.set(true, forKey: "launchedBefore")
             performSegue(withIdentifier: "tutorial", sender: nil)
         }
+        
+        // Updating hunger and thirst bars
+        UpdateBars()
         
         // TODO: Access Core Data...
         //        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "HealthStatus")
@@ -53,11 +64,11 @@ class HomeViewController: UIViewController, UINavigationControllerDelegate, UIIm
     
     
     @IBAction func scanButton(_ sender: UIButton) {
-        imagePicker =  UIImagePickerController()
-        imagePicker.delegate = self
-        imagePicker.sourceType = .camera
-        
-        present(imagePicker, animated: true, completion: nil)
+//        imagePicker =  UIImagePickerController()
+//        imagePicker.delegate = self
+//        imagePicker.sourceType = .camera
+//
+//        present(imagePicker, animated: true, completion: nil)
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
@@ -81,4 +92,32 @@ class HomeViewController: UIViewController, UINavigationControllerDelegate, UIIm
         }
     }
     
+    
+    // This is the initizialization of the colors and the fonts of changeble outlets
+    // in the Storyboard
+    
+    func InitializeOutlets () {
+        settingsIcon.font = UIFont(name: "SFProText-Light", size: 35)
+        journeyIcon.font = UIFont(name: "SFProText-Light", size: 35)
+        settingsIcon.textColor = GlobalSettings.colors[4]
+        journeyIcon.textColor = GlobalSettings.colors[4]
+
+        thirstBar.backgroundColor = GlobalSettings.colors[1]
+        hungerBar.backgroundColor = GlobalSettings.colors[3]
+        
+        
+        view.backgroundColor = GlobalSettings.colors[0]
+        feedMeButton.backgroundColor = GlobalSettings.colors[4]
+    }
+    
+    // Function to update the bars width depending on hunger and thirst of the Tamagotchi
+    func UpdateBars () {
+        
+        UIView.animate(withDuration: 1, animations: { () -> Void in
+            let wii = CGFloat(100)
+            self.thirstBar.frame = CGRect(x: self.thirstBar.frame.minX, y: self.thirstBar.frame.minY, width: wii, height: self.thirstBar.frame.height)
+
+        })
+        
+    }
 }

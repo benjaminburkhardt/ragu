@@ -13,12 +13,13 @@ import Foundation
 */
 
 class TamagotchiBackend {
-//    var hunger = 100
-//    var thirst = 100
+      var hunger = 100
+      var thirst = 100
 //    var regularAvatar: UIImage
 //    var hungryAvatar: UIImage
 //    var happyAvatar: UIImage
 //    var angryAvatar: UIImage
 //    var hungry: Bool
 //    var happy: Bool
+    
 }

@@ -1,4 +1,12 @@
+//
+// This file extends the UIView controls also in the Interface Builder
+// to set borders and shadows (even if shadows don't work)
+//
+
+
 import UIKit
+
+// These allow the extension to work with the Interface Builder in the Storyboard
 
 @IBDesignable
 class DesignableView: UIView {
@@ -11,6 +19,8 @@ class DesignableButton: UIButton {
 @IBDesignable
 class DesignableLabel: UILabel {
 }
+
+// This is the extension of the UIView
 
 extension UIView {
     

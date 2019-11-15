@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		1283E519237D8A9800C53692 /* DisplayAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1283E518237D8A9800C53692 /* DisplayAnimation.swift */; };
 		1283E51B237D8AB900C53692 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 1283E51A237D8AB900C53692 /* art.scnassets */; };
+		7CB22BE4237EA263009DDB7A /* SF-Pro-Text-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7CB22BD8237EA263009DDB7A /* SF-Pro-Text-Light.otf */; };
+		7CB22BEB237EA263009DDB7A /* SF-Pro-Text-LightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7CB22BDF237EA263009DDB7A /* SF-Pro-Text-LightItalic.otf */; };
 		7CD93985237D8E2E0020C35E /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD93984237D8E2E0020C35E /* UIViewExtension.swift */; };
 		BE2E9804237DF66F00A06BD6 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BE2E9802237DF66F00A06BD6 /* DataModel.xcdatamodeld */; };
 		BE9C62DB237986170088E1AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9C62DA237986170088E1AB /* AppDelegate.swift */; };
@@ -27,6 +29,8 @@
 /* Begin PBXFileReference section */
 		1283E518237D8A9800C53692 /* DisplayAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayAnimation.swift; sourceTree = "<group>"; };
 		1283E51A237D8AB900C53692 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
+		7CB22BD8237EA263009DDB7A /* SF-Pro-Text-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Light.otf"; sourceTree = "<group>"; };
+		7CB22BDF237EA263009DDB7A /* SF-Pro-Text-LightItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-LightItalic.otf"; sourceTree = "<group>"; };
 		7CD93984237D8E2E0020C35E /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		BE2E9803237DF66F00A06BD6 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		BE9C62D7237986170088E1AB /* Tamagochi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tamagochi.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -55,6 +59,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7CB22BD5237EA263009DDB7A /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				7CB22BD8237EA263009DDB7A /* SF-Pro-Text-Light.otf */,
+				7CB22BDF237EA263009DDB7A /* SF-Pro-Text-LightItalic.otf */,
+			);
+			path = fonts;
+			sourceTree = "<group>";
+		};
 		BE9C62CE237986170088E1AB = {
 			isa = PBXGroup;
 			children = (
@@ -76,6 +89,7 @@
 			isa = PBXGroup;
 			children = (
 				BEC8EE46237AE42900C58B14 /* GlobalSettings.swift */,
+				7CB22BD5237EA263009DDB7A /* fonts */,
 				BEC8EE44237AE3E000C58B14 /* MobileNetV2.mlmodel */,
 				BEC8EE42237AE3D900C58B14 /* ImageClassification.swift */,
 				BE9C62DA237986170088E1AB /* AppDelegate.swift */,
@@ -153,8 +167,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				BE9C62E7237986190088E1AB /* LaunchScreen.storyboard in Resources */,
+				7CB22BEB237EA263009DDB7A /* SF-Pro-Text-LightItalic.otf in Resources */,
 				1283E51B237D8AB900C53692 /* art.scnassets in Resources */,
 				BE9C62E4237986190088E1AB /* Assets.xcassets in Resources */,
+				7CB22BE4237EA263009DDB7A /* SF-Pro-Text-Light.otf in Resources */,
 				BE9C62E2237986170088E1AB /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
