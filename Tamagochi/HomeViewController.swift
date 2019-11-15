@@ -42,6 +42,8 @@ class HomeViewController: UIViewController, UINavigationControllerDelegate, UIIm
     
     override func viewDidAppear(_ animated: Bool) {
         
+         performSegue(withIdentifier: "tutorial", sender: nil)
+        
         // Check if it's the first launch of the app to show the Tutorial
         let launchedBefore = UserDefaults.standard.bool(forKey: "launchedBefore")
         if launchedBefore  {
@@ -64,11 +66,12 @@ class HomeViewController: UIViewController, UINavigationControllerDelegate, UIIm
     
     
     @IBAction func scanButton(_ sender: UIButton) {
-//        imagePicker =  UIImagePickerController()
-//        imagePicker.delegate = self
-//        imagePicker.sourceType = .camera
-//
-//        present(imagePicker, animated: true, completion: nil)
+        imagePicker =  UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.sourceType = .camera
+
+        present(imagePicker, animated: true, completion: nil)
+
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {

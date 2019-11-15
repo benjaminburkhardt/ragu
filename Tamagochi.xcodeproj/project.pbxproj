@@ -11,6 +11,7 @@
 		1283E51B237D8AB900C53692 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 1283E51A237D8AB900C53692 /* art.scnassets */; };
 		7CB22BE4237EA263009DDB7A /* SF-Pro-Text-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7CB22BD8237EA263009DDB7A /* SF-Pro-Text-Light.otf */; };
 		7CB22BEB237EA263009DDB7A /* SF-Pro-Text-LightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7CB22BDF237EA263009DDB7A /* SF-Pro-Text-LightItalic.otf */; };
+		7CB22BEF237EB8FE009DDB7A /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB22BEE237EB8FE009DDB7A /* TutorialViewController.swift */; };
 		7CD93985237D8E2E0020C35E /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD93984237D8E2E0020C35E /* UIViewExtension.swift */; };
 		BE2E9804237DF66F00A06BD6 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BE2E9802237DF66F00A06BD6 /* DataModel.xcdatamodeld */; };
 		BE9C62DB237986170088E1AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9C62DA237986170088E1AB /* AppDelegate.swift */; };
@@ -31,6 +32,7 @@
 		1283E51A237D8AB900C53692 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
 		7CB22BD8237EA263009DDB7A /* SF-Pro-Text-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Light.otf"; sourceTree = "<group>"; };
 		7CB22BDF237EA263009DDB7A /* SF-Pro-Text-LightItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-LightItalic.otf"; sourceTree = "<group>"; };
+		7CB22BEE237EB8FE009DDB7A /* TutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
 		7CD93984237D8E2E0020C35E /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		BE2E9803237DF66F00A06BD6 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		BE9C62D7237986170088E1AB /* Tamagochi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tamagochi.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -97,6 +99,7 @@
 				BE9C62DE237986170088E1AB /* HomeViewController.swift */,
 				1283E51A237D8AB900C53692 /* art.scnassets */,
 				BE9C62E0237986170088E1AB /* Main.storyboard */,
+				7CB22BEE237EB8FE009DDB7A /* TutorialViewController.swift */,
 				BE9C62E3237986190088E1AB /* Assets.xcassets */,
 				BE9C62E5237986190088E1AB /* LaunchScreen.storyboard */,
 				BE9C62E8237986190088E1AB /* Info.plist */,
@@ -192,6 +195,7 @@
 				BE9C62DD237986170088E1AB /* SceneDelegate.swift in Sources */,
 				BEC8EE43237AE3D900C58B14 /* ImageClassification.swift in Sources */,
 				BE9C62F12379C39C0088E1AB /* TamagotchiBackend.swift in Sources */,
+				7CB22BEF237EB8FE009DDB7A /* TutorialViewController.swift in Sources */,
 				BE9C62EF2379C3570088E1AB /* FeedbackViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -337,13 +341,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = K36EH7MH8U;
+				DEVELOPMENT_TEAM = UCA66KLTCL;
 				INFOPLIST_FILE = Tamagochi/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = RAGU.Tamagochi;
+				PRODUCT_BUNDLE_IDENTIFIER = Tamagochi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -355,13 +359,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = K36EH7MH8U;
+				DEVELOPMENT_TEAM = UCA66KLTCL;
 				INFOPLIST_FILE = Tamagochi/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = RAGU.Tamagochi;
+				PRODUCT_BUNDLE_IDENTIFIER = Tamagochi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

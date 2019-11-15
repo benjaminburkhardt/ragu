@@ -15,6 +15,10 @@ import CoreData
  */
 
 class FeedbackViewController : UIViewController {
+
+    @IBAction func closeFeedback(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
     
     var inputImage : UIImage?
     private var imageClassification : ImageClassification!
@@ -26,6 +30,8 @@ class FeedbackViewController : UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        view.backgroundColor = GlobalSettings.colors[0]
         
         imageClassification = ImageClassification(controllerToNotify: self)
         
