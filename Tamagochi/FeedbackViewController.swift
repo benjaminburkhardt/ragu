@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import AVFoundation
 
 /*
  This represents the feedback scene after taking a photo.
@@ -32,6 +33,10 @@ class FeedbackViewController : UIViewController {
         super.viewDidLoad()
         
         view.backgroundColor = GlobalSettings.colors[0]
+        bite1.alpha = 0
+        bite2.alpha = 0
+        bite3.alpha = 0
+        bite4.alpha = 0
         
         imageClassification = ImageClassification(controllerToNotify: self)
         
@@ -65,11 +70,66 @@ class FeedbackViewController : UIViewController {
         }
     }
     
+    
+    func imageRecognized(){
+        
+        UIView.animate(withDuration: 0.2, delay: 0.7, options: [], animations: {
+
+            self.bite1.alpha = 1
+
+        }, completion: { (position) in
+            
+        
+        UIView.animate(withDuration: 0.2, delay: 0.7, options: [], animations: {
+
+            self.bite2.alpha = 1
+
+        }, completion: { (position) in
+            
+        
+        UIView.animate(withDuration: 0.2, delay: 0.7, options: [], animations: {
+
+            self.bite3.alpha = 1
+            self.titleLabel.text = "Yummy!"
+
+
+        }, completion: { (position) in
+            
+        
+        UIView.animate(withDuration: 0.2, delay: 0.7, options: [], animations: {
+
+            self.bite4.alpha = 1
+
+        }, completion: { (position) in
+            
+            UIView.animate(withDuration: 0.2, delay: 0.7, options: [], animations: {
+
+            self.imageViewer.alpha = 0
+
+               }, completion: { (position) in
+               
+               UIView.animate(withDuration: 0.2, delay: 0.7, options: [], animations: {
+
+                   self.dismiss(animated: true, completion: nil)
+
+                  }, completion: nil)
+            })
+                })
+            })
+        })
+    })
+    }
+    
     @IBAction func closeButton(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
     }
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var imageViewer: UIImageView!
+    @IBOutlet weak var bite1: UIImageView!
+    @IBOutlet weak var bite2: UIImageView!
+    @IBOutlet weak var bite3: UIImageView!
+    @IBOutlet weak var bite4: UIImageView!
+    @IBOutlet weak var titleLabel: UILabel!
 }
 
 

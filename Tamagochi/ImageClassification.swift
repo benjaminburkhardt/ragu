@@ -103,7 +103,13 @@ class ImageClassification : UIViewController {
                 self.result = recognized
                 self.controllerToNotify.updateStatus(status: ImageStatus.classified)
                 
-                // TODO: Check a DB if this is healthy or not...
+                // TODO: Check a DB if this is healthy or not...ù
+                //
+                //
+                //
+                
+                // Start animation in FeedbackViewController
+                self.controllerToNotify.imageRecognized()
             }
         }
     }
