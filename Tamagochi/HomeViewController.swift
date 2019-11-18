@@ -105,7 +105,7 @@ class HomeViewController: UIViewController, UINavigationControllerDelegate, UIIm
     // This is the initizialization of the colors and the fonts of changeble outlets
     // in the Storyboard
     
-    func InitializeOutlets () {
+    func initializeOutlets () {
         settingsIcon.titleLabel?.font = UIFont(name: "SFProText-Light", size: 35)
         journeyIcon.titleLabel?.font = UIFont(name: "SFProText-Light", size: 35)
 
