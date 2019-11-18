@@ -108,8 +108,15 @@ class ImageClassification : UIViewController {
                 //
                 //
                 
+                // IF is Image of healthy Food
                 // Start animation in FeedbackViewController
-                self.controllerToNotify.imageRecognized()
+                self.controllerToNotify.healthyImageRecognized()
+                
+                // ELSE IF is Image of unhealthy Food
+                // TO_DO
+                
+                // ELSE IF Image is not recognized
+                // TO_DO
             }
         }
     }
