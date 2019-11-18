@@ -108,7 +108,7 @@ class HomeViewController: UIViewController, UINavigationControllerDelegate, UIIm
     func initializeOutlets () {
         settingsIcon.titleLabel?.font = UIFont(name: "SFProText-Light", size: 35)
         journeyIcon.titleLabel?.font = UIFont(name: "SFProText-Light", size: 35)
-
+        
         settingsIcon.setTitleColor(GlobalSettings.colors[4], for: .normal)
         journeyIcon.setTitleColor(GlobalSettings.colors[4], for: .normal)
         
@@ -129,4 +129,93 @@ class HomeViewController: UIViewController, UINavigationControllerDelegate, UIIm
         })
         
     }
+    
+    
+    
+    // MARK: - CoreData access
+    func initHealthStatus(){
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else{
+            return
+        }
+        
+        let managedContext = appDelegate.persistentContainer.viewContext
+        
+        let currentHealthStatusEntity = NSEntityDescription.entity(forEntityName: "HealthStatus", in: managedContext)!
+        
+        let currentHealthStatus = NSManagedObject(entity: currentHealthStatusEntity, insertInto: managedContext)
+        currentHealthStatus.setValue(50, forKey: "hungry")
+        currentHealthStatus.setValue(50, forKey: "thirsty")
+        // 4 hours ago
+        currentHealthStatus.setValue(Date(timeIntervalSinceNow: -(60*60*4)), forKey: "lastPhoto")
+        
+        do{
+            try managedContext.save()
+        } catch let error as NSError {
+            print("Error while writing CoreData! \(error.userInfo)")
+        }
+        print("Initialized CoreData HealthStatus entry")
+    }
+    
+    func readHealthStatus(){
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else{
+            return
+        }
+        
+        let managedContext = appDelegate.persistentContainer.viewContext
+        
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "HealthStatus")
+        
+        do{
+            let result = try managedContext.fetch(fetchRequest)
+            for data in result as! [NSManagedObject] {
+                print(data.value(forKey: "hungry") as! Int16)
+            }
+        } catch let error as NSError {
+            print("Error while reading CoreData! \(error.userInfo)")
+        }
+    }
+    
+    /// 
+    func updateCurrentHealthStatus(){
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else{
+            return
+        }
+        
+        let managedContext = appDelegate.persistentContainer.viewContext
+        
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "HealthStatus")
+        fetchRequest.fetchLimit = 1
+        
+        do{
+            let results = try managedContext.fetch(fetchRequest)
+            if results.count != 0 {
+                let objectToUpdate = results[0] as! NSManagedObject
+                // TODO: Do the calcuation depending on the date
+                objectToUpdate.setValue(100, forKey: "hungry")
+                objectToUpdate.setValue(100, forKey: "thirsty")
+            }else{
+                throw TamagotchiError.coreDataNotInitialized
+            }
+            
+        } catch {
+            print("Could not update CoreData entry! Try to init now... \(error)")
+            initHealthStatus()
+            
+        }
+        
+        do{
+            let result = try managedContext.fetch(fetchRequest)
+            for data in result as! [NSManagedObject] {
+                print(data.value(forKey: "hungry") as! Int16)
+            }
+        } catch let error as NSError {
+            print("Error while reading CoreData! \(error.userInfo)")
+        }
+    }
+    
+    
+    enum TamagotchiError: Error{
+        case coreDataNotInitialized
+    }
+    
 }
