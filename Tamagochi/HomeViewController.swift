@@ -55,12 +55,6 @@ class HomeViewController: UIViewController, UINavigationControllerDelegate, UIIm
         
         // Updating hunger and thirst bars
         updateBars()
-        
-        // TODO: Access Core Data...
-        //        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "HealthStatus")
-        //        var context = NSManagedObjectContext(concurrencyType: NSManagedObjectContextConcurrencyType.mainQueueConcurrencyType)
-        //        print(container.managedObjectModel)
-        //        print(fetchRequest)
     }
     
     
@@ -121,11 +115,19 @@ class HomeViewController: UIViewController, UINavigationControllerDelegate, UIIm
     
     // Function to update the bars width depending on hunger and thirst of the Tamagotchi
     func updateBars () {
-        
+        updateCurrentHealthStatus()
+        // thirsty level
         UIView.animate(withDuration: 1, animations: { () -> Void in
-            let wii = CGFloat(100)
-            self.thirstBar.frame = CGRect(x: self.thirstBar.frame.minX, y: self.thirstBar.frame.minY, width: wii, height: self.thirstBar.frame.height)
-            
+            let healthStatus = self.readHealthStatus()
+            let barWidth: CGFloat = self.thirstBar.frame.width/100 * CGFloat(healthStatus["thirsty"] as! Int)
+            self.thirstBar.frame = CGRect(x: self.thirstBar.frame.minX, y: self.thirstBar.frame.minY, width: barWidth, height: self.thirstBar.frame.height)
+        })
+        
+        // hungry level
+        UIView.animate(withDuration: 1, animations: { () -> Void in
+            let healthStatus = self.readHealthStatus()
+            let barWidth: CGFloat = self.hungerBar.frame.width/100 * CGFloat(healthStatus["hungry"] as! Int)
+            self.hungerBar.frame = CGRect(x: self.hungerBar.frame.minX, y: self.hungerBar.frame.minY, width: barWidth, height: self.hungerBar.frame.height)
         })
         
     }
@@ -156,26 +158,32 @@ class HomeViewController: UIViewController, UINavigationControllerDelegate, UIIm
         print("Initialized CoreData HealthStatus entry")
     }
     
-    func readHealthStatus(){
+    func readHealthStatus() -> [String: Int]{
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else{
-            return
+            return [:]
         }
         
         let managedContext = appDelegate.persistentContainer.viewContext
         
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "HealthStatus")
         
+        var healthValues: [String: Int] = [:]
+        
         do{
             let result = try managedContext.fetch(fetchRequest)
             for data in result as! [NSManagedObject] {
-                print(data.value(forKey: "hungry") as! Int16)
+                print("thirsty ", data.value(forKey: "thirsty") as! Int)
+                healthValues["thirsty"] = data.value(forKey: "thirsty") as? Int
+                print("hungry ", data.value(forKey: "hungry") as! Int)
+                healthValues["hungry"] = data.value(forKey: "hungry") as? Int
             }
         } catch let error as NSError {
             print("Error while reading CoreData! \(error.userInfo)")
         }
+        return healthValues
     }
     
-    /// 
+    // TODO decided how much to increase, set date...
     func updateCurrentHealthStatus(){
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else{
             return
@@ -191,8 +199,8 @@ class HomeViewController: UIViewController, UINavigationControllerDelegate, UIIm
             if results.count != 0 {
                 let objectToUpdate = results[0] as! NSManagedObject
                 // TODO: Do the calcuation depending on the date
-                objectToUpdate.setValue(100, forKey: "hungry")
-                objectToUpdate.setValue(100, forKey: "thirsty")
+                objectToUpdate.setValue(50, forKey: "hungry")
+                objectToUpdate.setValue(50, forKey: "thirsty")
             }else{
                 throw TamagotchiError.coreDataNotInitialized
             }
