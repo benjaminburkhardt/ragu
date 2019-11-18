@@ -18,8 +18,8 @@ class HomeViewController: UIViewController, UINavigationControllerDelegate, UIIm
     // Connection to the Outlet in the Storyboard
     @IBOutlet weak var thirstBar: UIView!
     @IBOutlet weak var hungerBar: UIView!
-    @IBOutlet weak var journeyIcon: UILabel!
-    @IBOutlet weak var settingsIcon: UILabel!
+    @IBOutlet weak var journeyIcon: UIButton!
+    @IBOutlet weak var settingsIcon: UIButton!
     @IBOutlet weak var feedMeButton: UIButton!
     
     // CoreData
@@ -105,11 +105,12 @@ class HomeViewController: UIViewController, UINavigationControllerDelegate, UIIm
     // This is the initizialization of the colors and the fonts of changeble outlets
     // in the Storyboard
     
-    func initializeOutlets () {
-        settingsIcon.font = UIFont(name: "SFProText-Light", size: 35)
-        journeyIcon.font = UIFont(name: "SFProText-Light", size: 35)
-        settingsIcon.textColor = GlobalSettings.colors[4]
-        journeyIcon.textColor = GlobalSettings.colors[4]
+    func InitializeOutlets () {
+        settingsIcon.titleLabel?.font = UIFont(name: "SFProText-Light", size: 35)
+        journeyIcon.titleLabel?.font = UIFont(name: "SFProText-Light", size: 35)
+
+        settingsIcon.setTitleColor(GlobalSettings.colors[4], for: .normal)
+        journeyIcon.setTitleColor(GlobalSettings.colors[4], for: .normal)
         
         thirstBar.backgroundColor = GlobalSettings.colors[1]
         hungerBar.backgroundColor = GlobalSettings.colors[3]

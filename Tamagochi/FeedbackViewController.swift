@@ -70,7 +70,7 @@ class FeedbackViewController : UIViewController {
     }
     
     
-    func imageRecognized(){
+    func healthyImageRecognized(){
         
         UIView.animate(withDuration: 0.2, delay: 0.7, options: [], animations: {
 
