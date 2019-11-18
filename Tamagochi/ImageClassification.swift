@@ -27,7 +27,6 @@ class ImageClassification : UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
     /// - Tag: MLModelSetup
     lazy var classificationRequest: VNCoreMLRequest = {
         do {

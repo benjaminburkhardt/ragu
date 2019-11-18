@@ -56,7 +56,6 @@ class FeedbackViewController : UIViewController {
         switch status{
         case .processing:
             statusLabel.text = "Classification..."
-            
         case .unknown:
             statusLabel.text = "Unknow status..."
         case .healthy:

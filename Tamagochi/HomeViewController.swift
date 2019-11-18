@@ -29,7 +29,7 @@ class HomeViewController: UIViewController, UINavigationControllerDelegate, UIIm
         super.viewDidLoad()
         
         // Initializations of colors and fonts
-        InitializeOutlets()
+        initializeOutlets()
         
         // CoreData setup
         container = NSPersistentContainer(name: "DataModel")
@@ -54,7 +54,7 @@ class HomeViewController: UIViewController, UINavigationControllerDelegate, UIIm
         }
         
         // Updating hunger and thirst bars
-        UpdateBars()
+        updateBars()
         
         // TODO: Access Core Data...
         //        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "HealthStatus")
@@ -65,27 +65,33 @@ class HomeViewController: UIViewController, UINavigationControllerDelegate, UIIm
     
     
     @IBAction func scanButton(_ sender: UIButton) {
+        
         imagePicker =  UIImagePickerController()
         imagePicker.delegate = self
-        imagePicker.sourceType = .camera
-
+        
+        // catch expection in Simulator
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            imagePicker.sourceType = .camera
+        }
+        else {
+            imagePicker.sourceType = .savedPhotosAlbum // or .photoLibrary
+        }
         present(imagePicker, animated: true, completion: nil)
-
-
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         imagePicker.dismiss(animated: true, completion: nil)
-        
-        print("Image was taken!")
-        
+        print("Image captured!")
         let inputImage = info[.originalImage] as! UIImage
-        
-        // go to the FeedbackViewController
+        goToFeedbackViewController(inputImage: inputImage)
+    }
+    
+    func goToFeedbackViewController(inputImage: UIImage){
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let feedbackViewController = storyBoard.instantiateViewController(withIdentifier: "feedbackViewController") as! FeedbackViewController
         feedbackViewController.inputImage = inputImage
         self.present(feedbackViewController, animated: true, completion: nil)
+        
     }
     
     /// MARK - Prepare stuff for the next ViewController
@@ -99,27 +105,26 @@ class HomeViewController: UIViewController, UINavigationControllerDelegate, UIIm
     // This is the initizialization of the colors and the fonts of changeble outlets
     // in the Storyboard
     
-    func InitializeOutlets () {
+    func initializeOutlets () {
         settingsIcon.font = UIFont(name: "SFProText-Light", size: 35)
         journeyIcon.font = UIFont(name: "SFProText-Light", size: 35)
         settingsIcon.textColor = GlobalSettings.colors[4]
         journeyIcon.textColor = GlobalSettings.colors[4]
-
+        
         thirstBar.backgroundColor = GlobalSettings.colors[1]
         hungerBar.backgroundColor = GlobalSettings.colors[3]
-        
         
         view.backgroundColor = GlobalSettings.colors[0]
         feedMeButton.backgroundColor = GlobalSettings.colors[4]
     }
     
     // Function to update the bars width depending on hunger and thirst of the Tamagotchi
-    func UpdateBars () {
+    func updateBars () {
         
         UIView.animate(withDuration: 1, animations: { () -> Void in
             let wii = CGFloat(100)
             self.thirstBar.frame = CGRect(x: self.thirstBar.frame.minX, y: self.thirstBar.frame.minY, width: wii, height: self.thirstBar.frame.height)
-
+            
         })
         
     }
