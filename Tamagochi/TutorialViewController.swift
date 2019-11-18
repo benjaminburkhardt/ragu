@@ -11,6 +11,10 @@ import UIKit
 
 class TutorialViewController : UIViewController{
     
+    override func viewDidAppear(_ animated: Bool) {
+        self.view.backgroundColor = GlobalSettings.colors[0]
+    }
+    
     @IBAction func exitTutorial(_ sender: UIButton) {
         
         // Closes the tutorial page

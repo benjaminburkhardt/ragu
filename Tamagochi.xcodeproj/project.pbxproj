@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1283E519237D8A9800C53692 /* DisplayAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1283E518237D8A9800C53692 /* DisplayAnimation.swift */; };
 		1283E51B237D8AB900C53692 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 1283E51A237D8AB900C53692 /* art.scnassets */; };
+		7CA48CDD2382B8710061C1C8 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA48CDC2382B8710061C1C8 /* SettingsViewController.swift */; };
 		7CB22BE4237EA263009DDB7A /* SF-Pro-Text-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7CB22BD8237EA263009DDB7A /* SF-Pro-Text-Light.otf */; };
 		7CB22BEB237EA263009DDB7A /* SF-Pro-Text-LightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7CB22BDF237EA263009DDB7A /* SF-Pro-Text-LightItalic.otf */; };
 		7CB22BEF237EB8FE009DDB7A /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB22BEE237EB8FE009DDB7A /* TutorialViewController.swift */; };
@@ -30,6 +31,7 @@
 /* Begin PBXFileReference section */
 		1283E518237D8A9800C53692 /* DisplayAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayAnimation.swift; sourceTree = "<group>"; };
 		1283E51A237D8AB900C53692 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
+		7CA48CDC2382B8710061C1C8 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		7CB22BD8237EA263009DDB7A /* SF-Pro-Text-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Light.otf"; sourceTree = "<group>"; };
 		7CB22BDF237EA263009DDB7A /* SF-Pro-Text-LightItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-LightItalic.otf"; sourceTree = "<group>"; };
 		7CB22BEE237EB8FE009DDB7A /* TutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 				BE9C62DE237986170088E1AB /* HomeViewController.swift */,
 				1283E51A237D8AB900C53692 /* art.scnassets */,
 				BE9C62E0237986170088E1AB /* Main.storyboard */,
+				7CA48CDC2382B8710061C1C8 /* SettingsViewController.swift */,
 				7CB22BEE237EB8FE009DDB7A /* TutorialViewController.swift */,
 				BE9C62E3237986190088E1AB /* Assets.xcassets */,
 				BE9C62E5237986190088E1AB /* LaunchScreen.storyboard */,
@@ -195,6 +198,7 @@
 				BE9C62DD237986170088E1AB /* SceneDelegate.swift in Sources */,
 				BEC8EE43237AE3D900C58B14 /* ImageClassification.swift in Sources */,
 				BE9C62F12379C39C0088E1AB /* TamagotchiBackend.swift in Sources */,
+				7CA48CDD2382B8710061C1C8 /* SettingsViewController.swift in Sources */,
 				7CB22BEF237EB8FE009DDB7A /* TutorialViewController.swift in Sources */,
 				BE9C62EF2379C3570088E1AB /* FeedbackViewController.swift in Sources */,
 			);
