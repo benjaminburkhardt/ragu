@@ -23,6 +23,7 @@
 		BE9C62E7237986190088E1AB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE9C62E5237986190088E1AB /* LaunchScreen.storyboard */; };
 		BE9C62EF2379C3570088E1AB /* FeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9C62EE2379C3570088E1AB /* FeedbackViewController.swift */; };
 		BE9C62F12379C39C0088E1AB /* TamagotchiBackend.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9C62F02379C39C0088E1AB /* TamagotchiBackend.swift */; };
+		BEB067BF2383E57000A3FAC6 /* UILoggingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB067BE2383E57000A3FAC6 /* UILoggingViewController.swift */; };
 		BEC8EE43237AE3D900C58B14 /* ImageClassification.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC8EE42237AE3D900C58B14 /* ImageClassification.swift */; };
 		BEC8EE45237AE3E000C58B14 /* MobileNetV2.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = BEC8EE44237AE3E000C58B14 /* MobileNetV2.mlmodel */; };
 		BEC8EE47237AE42900C58B14 /* GlobalSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC8EE46237AE42900C58B14 /* GlobalSettings.swift */; };
@@ -47,6 +48,7 @@
 		BE9C62E8237986190088E1AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BE9C62EE2379C3570088E1AB /* FeedbackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackViewController.swift; sourceTree = "<group>"; };
 		BE9C62F02379C39C0088E1AB /* TamagotchiBackend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TamagotchiBackend.swift; sourceTree = "<group>"; };
+		BEB067BE2383E57000A3FAC6 /* UILoggingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UILoggingViewController.swift; sourceTree = "<group>"; };
 		BEC8EE42237AE3D900C58B14 /* ImageClassification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageClassification.swift; sourceTree = "<group>"; };
 		BEC8EE44237AE3E000C58B14 /* MobileNetV2.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = MobileNetV2.mlmodel; sourceTree = "<group>"; };
 		BEC8EE46237AE42900C58B14 /* GlobalSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalSettings.swift; sourceTree = "<group>"; };
@@ -92,6 +94,7 @@
 		BE9C62D9237986170088E1AB /* Tamagochi */ = {
 			isa = PBXGroup;
 			children = (
+				BEB067BE2383E57000A3FAC6 /* UILoggingViewController.swift */,
 				BEC8EE46237AE42900C58B14 /* GlobalSettings.swift */,
 				7CB22BD5237EA263009DDB7A /* fonts */,
 				BEC8EE44237AE3E000C58B14 /* MobileNetV2.mlmodel */,
@@ -190,6 +193,7 @@
 			files = (
 				BE2E9804237DF66F00A06BD6 /* DataModel.xcdatamodeld in Sources */,
 				7CD93985237D8E2E0020C35E /* UIViewExtension.swift in Sources */,
+				BEB067BF2383E57000A3FAC6 /* UILoggingViewController.swift in Sources */,
 				BEC8EE45237AE3E000C58B14 /* MobileNetV2.mlmodel in Sources */,
 				1283E519237D8A9800C53692 /* DisplayAnimation.swift in Sources */,
 				BEC8EE47237AE42900C58B14 /* GlobalSettings.swift in Sources */,
@@ -345,7 +349,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = UCA66KLTCL;
+				DEVELOPMENT_TEAM = K36EH7MH8U;
 				INFOPLIST_FILE = Tamagochi/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -363,7 +367,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = UCA66KLTCL;
+				DEVELOPMENT_TEAM = K36EH7MH8U;
 				INFOPLIST_FILE = Tamagochi/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

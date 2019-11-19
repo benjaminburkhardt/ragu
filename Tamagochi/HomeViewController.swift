@@ -12,12 +12,13 @@ import CoreData
  This represents the main scene. The Tamagotchi is shown here.
  The user should be triggered to take a picture.
  */
-class HomeViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+class HomeViewController: UILoggingViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     var imagePicker: UIImagePickerController!
     
     // Connection to the Outlet in the Storyboard
     @IBOutlet weak var thirstBar: UIView!
     @IBOutlet weak var hungerBar: UIView!
+    @IBOutlet weak var barBackgroundView: UIView!
     @IBOutlet weak var journeyIcon: UIButton!
     @IBOutlet weak var settingsIcon: UIButton!
     @IBOutlet weak var feedMeButton: UIButton!
@@ -39,9 +40,13 @@ class HomeViewController: UIViewController, UINavigationControllerDelegate, UIIm
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        // update data
+    }
+    
     
     override func viewDidAppear(_ animated: Bool) {
-        
+        // update outlets
         
         // Check if it's the first launch of the app to show the Tutorial
         let launchedBefore = UserDefaults.standard.bool(forKey: "launchedBefore")
@@ -119,14 +124,14 @@ class HomeViewController: UIViewController, UINavigationControllerDelegate, UIIm
         // thirsty level
         UIView.animate(withDuration: 1, animations: { () -> Void in
             let healthStatus = self.readHealthStatus()
-            let barWidth: CGFloat = self.thirstBar.frame.width/100 * CGFloat(healthStatus["thirsty"] as! Int)
+            let barWidth: CGFloat = self.barBackgroundView.frame.width/100 * CGFloat(healthStatus["thirsty"]!)
             self.thirstBar.frame = CGRect(x: self.thirstBar.frame.minX, y: self.thirstBar.frame.minY, width: barWidth, height: self.thirstBar.frame.height)
         })
         
         // hungry level
         UIView.animate(withDuration: 1, animations: { () -> Void in
             let healthStatus = self.readHealthStatus()
-            let barWidth: CGFloat = self.hungerBar.frame.width/100 * CGFloat(healthStatus["hungry"] as! Int)
+            let barWidth: CGFloat = self.barBackgroundView.frame.width/100 * CGFloat(healthStatus["hungry"]!)
             self.hungerBar.frame = CGRect(x: self.hungerBar.frame.minX, y: self.hungerBar.frame.minY, width: barWidth, height: self.hungerBar.frame.height)
         })
         
@@ -219,6 +224,12 @@ class HomeViewController: UIViewController, UINavigationControllerDelegate, UIIm
         } catch let error as NSError {
             print("Error while reading CoreData! \(error.userInfo)")
         }
+    }
+    
+    
+    override func didReceiveMemoryWarning() {
+        // release stuff, otherwise it gets killed
+        print("Memory warning!!!")
     }
     
     

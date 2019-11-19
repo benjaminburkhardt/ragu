@@ -15,8 +15,8 @@ import AVFoundation
  The sees now if the picture was accepted.
  */
 
-class FeedbackViewController : UIViewController {
-
+class FeedbackViewController : UILoggingViewController {
+    
     @IBAction func closeFeedback(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
@@ -39,7 +39,9 @@ class FeedbackViewController : UIViewController {
         bite4.alpha = 0
         
         imageClassification = ImageClassification(controllerToNotify: self)
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         if inputImage != nil{
             // view image (maybe not required)
             imageViewer.image = inputImage!
@@ -49,6 +51,7 @@ class FeedbackViewController : UIViewController {
             print("ERROR: No image passed for classification!")
         }
     }
+    
     
     func updateStatus(status : ImageStatus){
         self.status = status
@@ -72,51 +75,51 @@ class FeedbackViewController : UIViewController {
     
     func healthyImageRecognized(){
         
-        UIView.animate(withDuration: 0.2, delay: 0.7, options: [], animations: {
-
+        UIView.animate(withDuration: 0.2, delay: 0.3, options: [], animations: {
+            
             self.bite1.alpha = 1
-
+            
         }, completion: { (position) in
             
-        
-        UIView.animate(withDuration: 0.2, delay: 0.7, options: [], animations: {
-
-            self.bite2.alpha = 1
-
-        }, completion: { (position) in
             
-        
-        UIView.animate(withDuration: 0.2, delay: 0.7, options: [], animations: {
-
-            self.bite3.alpha = 1
-            self.titleLabel.text = "Yummy!"
-
-
-        }, completion: { (position) in
-            
-        
-        UIView.animate(withDuration: 0.2, delay: 0.7, options: [], animations: {
-
-            self.bite4.alpha = 1
-
-        }, completion: { (position) in
-            
-            UIView.animate(withDuration: 0.2, delay: 0.7, options: [], animations: {
-
-            self.imageViewer.alpha = 0
-
-               }, completion: { (position) in
-               
-               UIView.animate(withDuration: 0.2, delay: 0.7, options: [], animations: {
-
-                   self.dismiss(animated: true, completion: nil)
-
-                  }, completion: nil)
-            })
+            UIView.animate(withDuration: 0.2, delay: 0.3, options: [], animations: {
+                
+                self.bite2.alpha = 1
+                
+            }, completion: { (position) in
+                
+                
+                UIView.animate(withDuration: 0.2, delay: 0.3, options: [], animations: {
+                    
+                    self.bite3.alpha = 1
+                    self.titleLabel.text = "Yummy!"
+                    
+                    
+                }, completion: { (position) in
+                    
+                    
+                    UIView.animate(withDuration: 0.2, delay: 0.3, options: [], animations: {
+                        
+                        self.bite4.alpha = 1
+                        
+                    }, completion: { (position) in
+                        
+                        UIView.animate(withDuration: 0.2, delay: 0.3, options: [], animations: {
+                            
+                            self.imageViewer.alpha = 0
+                            
+                        }, completion: { (position) in
+                            
+                            UIView.animate(withDuration: 0.2, delay: 0.3, options: [], animations: {
+                                
+                                self.dismiss(animated: true, completion: nil)
+                                
+                            }, completion: nil)
+                        })
+                    })
                 })
             })
         })
-    })
     }
     
     @IBAction func closeButton(_ sender: UIButton) {

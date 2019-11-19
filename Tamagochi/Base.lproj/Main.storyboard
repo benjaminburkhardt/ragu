@@ -134,6 +134,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="barBackgroundView" destination="0Eg-aN-LgJ" id="1lG-iO-gUg"/>
                         <outlet property="feedMeButton" destination="bJp-fC-K3F" id="SAh-Ns-ezC"/>
                         <outlet property="hungerBar" destination="ywx-Lu-24R" id="a7R-2n-IiS"/>
                         <outlet property="journeyIcon" destination="I49-dO-wb8" id="wDh-bV-e1p"/>
@@ -241,7 +242,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kut-Ah-hOI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="847.82608695652175" y="137.94642857142856"/>
+            <point key="canvasLocation" x="1322" y="208"/>
         </scene>
         <!--Tutorial View Controller-->
         <scene sceneID="B4f-V0-dDl">

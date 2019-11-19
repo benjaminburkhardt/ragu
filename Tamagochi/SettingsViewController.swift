@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class SettingsViewController : UIViewController{
+class SettingsViewController : UILoggingViewController{
     override func viewDidAppear(_ animated: Bool) {
         self.view.backgroundColor = GlobalSettings.colors[0]
     }
