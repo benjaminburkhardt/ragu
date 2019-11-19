@@ -85,6 +85,8 @@ class FeedbackViewController : UILoggingViewController {
             UIView.animate(withDuration: 0.2, delay: 0.3, options: [], animations: {
                 
                 self.bite2.alpha = 1
+                self.titleLabel.text = "Yummy!"
+                self.titleLabel.textColor = UIColor.green
                 
             }, completion: { (position) in
                 
@@ -92,7 +94,6 @@ class FeedbackViewController : UILoggingViewController {
                 UIView.animate(withDuration: 0.2, delay: 0.3, options: [], animations: {
                     
                     self.bite3.alpha = 1
-                    self.titleLabel.text = "Yummy!"
                     
                     
                 }, completion: { (position) in
@@ -122,9 +123,39 @@ class FeedbackViewController : UILoggingViewController {
         })
     }
     
-    @IBAction func closeButton(_ sender: UIButton) {
-        dismiss(animated: true, completion: nil)
+    func unhealthyImageRecognized(){
+        UIView.animate(withDuration: 0.2, delay: 0.3, options: [], animations: {
+            
+            self.bite1.alpha = 1
+            
+        }, completion: { (position) in
+            
+            
+            UIView.animate(withDuration: 0.2, delay: 0.3, options: [], animations: {
+                
+                self.titleLabel.text = "So bad!"
+                self.titleLabel.textColor = UIColor.red
+                self.statusLabel.text = "You should try eating something different"
+                
+            }, completion: nil)
+        })
     }
+
+    func imageNotRecognized(){
+        myAlert(title: "Error", message: "Image not recognized")
+    }
+    
+    func myAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        self.titleLabel.text = "Error!"
+        self.statusLabel.text = ""
+        alert.addAction(UIAlertAction(title: "Try again", style: .default, handler: { (action) in
+            alert.dismiss(animated: true, completion: nil)
+            self.dismiss(animated: true, completion: nil)
+        }))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var imageViewer: UIImageView!
     @IBOutlet weak var bite1: UIImageView!

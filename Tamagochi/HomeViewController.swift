@@ -137,8 +137,6 @@ class HomeViewController: UILoggingViewController, UINavigationControllerDelegat
         
     }
     
-    
-    
     // MARK: - CoreData access
     func initHealthStatus(){
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else{
