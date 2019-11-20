@@ -25,6 +25,8 @@
 		BE9C62F12379C39C0088E1AB /* TamagotchiBackend.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9C62F02379C39C0088E1AB /* TamagotchiBackend.swift */; };
 		BEB067BF2383E57000A3FAC6 /* UILoggingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB067BE2383E57000A3FAC6 /* UILoggingViewController.swift */; };
 		BEB067C12383F86600A3FAC6 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB067C02383F86600A3FAC6 /* ProgressView.swift */; };
+		BEB067C5238576A000A3FAC6 /* PersistentDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB067C4238576A000A3FAC6 /* PersistentDataManager.swift */; };
+		BEB067C92385A17400A3FAC6 /* StoredImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB067C82385A17400A3FAC6 /* StoredImage.swift */; };
 		BEC8EE43237AE3D900C58B14 /* ImageClassification.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC8EE42237AE3D900C58B14 /* ImageClassification.swift */; };
 		BEC8EE45237AE3E000C58B14 /* MobileNetV2.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = BEC8EE44237AE3E000C58B14 /* MobileNetV2.mlmodel */; };
 		BEC8EE47237AE42900C58B14 /* GlobalSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC8EE46237AE42900C58B14 /* GlobalSettings.swift */; };
@@ -51,6 +53,8 @@
 		BE9C62F02379C39C0088E1AB /* TamagotchiBackend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TamagotchiBackend.swift; sourceTree = "<group>"; };
 		BEB067BE2383E57000A3FAC6 /* UILoggingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UILoggingViewController.swift; sourceTree = "<group>"; };
 		BEB067C02383F86600A3FAC6 /* ProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
+		BEB067C4238576A000A3FAC6 /* PersistentDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentDataManager.swift; sourceTree = "<group>"; };
+		BEB067C82385A17400A3FAC6 /* StoredImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoredImage.swift; sourceTree = "<group>"; };
 		BEC8EE42237AE3D900C58B14 /* ImageClassification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageClassification.swift; sourceTree = "<group>"; };
 		BEC8EE44237AE3E000C58B14 /* MobileNetV2.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = MobileNetV2.mlmodel; sourceTree = "<group>"; };
 		BEC8EE46237AE42900C58B14 /* GlobalSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalSettings.swift; sourceTree = "<group>"; };
@@ -116,6 +120,8 @@
 				BEB067C02383F86600A3FAC6 /* ProgressView.swift */,
 				BE9C62F02379C39C0088E1AB /* TamagotchiBackend.swift */,
 				1283E518237D8A9800C53692 /* DisplayAnimation.swift */,
+				BEB067C4238576A000A3FAC6 /* PersistentDataManager.swift */,
+				BEB067C82385A17400A3FAC6 /* StoredImage.swift */,
 			);
 			path = Tamagochi;
 			sourceTree = "<group>";
@@ -198,6 +204,8 @@
 				7CD93985237D8E2E0020C35E /* UIViewExtension.swift in Sources */,
 				BEB067C12383F86600A3FAC6 /* ProgressView.swift in Sources */,
 				BEB067BF2383E57000A3FAC6 /* UILoggingViewController.swift in Sources */,
+				BEB067C92385A17400A3FAC6 /* StoredImage.swift in Sources */,
+				BEB067C5238576A000A3FAC6 /* PersistentDataManager.swift in Sources */,
 				BEC8EE45237AE3E000C58B14 /* MobileNetV2.mlmodel in Sources */,
 				1283E519237D8A9800C53692 /* DisplayAnimation.swift in Sources */,
 				BEC8EE47237AE42900C58B14 /* GlobalSettings.swift in Sources */,
@@ -353,13 +361,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = UCA66KLTCL;
+				DEVELOPMENT_TEAM = K36EH7MH8U;
 				INFOPLIST_FILE = Tamagochi/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = RAGU.Tamagochi;
+				PRODUCT_BUNDLE_IDENTIFIER = "RAGU-BB.Tamagochi";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -371,13 +379,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = UCA66KLTCL;
+				DEVELOPMENT_TEAM = K36EH7MH8U;
 				INFOPLIST_FILE = Tamagochi/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = RAGU.Tamagochi;
+				PRODUCT_BUNDLE_IDENTIFIER = "RAGU-BB.Tamagochi";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

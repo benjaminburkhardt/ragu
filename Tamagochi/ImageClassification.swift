@@ -103,20 +103,27 @@ class ImageClassification : UIViewController {
                 self.controllerToNotify.updateStatus(status: ImageStatus.classified)
                 self.controllerToNotify.updateRecognizedObject(recognizedObject: recognized[0])
                 
-                // Check if confidence is to low to detect something
-                if confidence < 0.2 {
-                    self.controllerToNotify.updateStatus(status: ImageStatus.lowConfidence)
-                } else if recognized[0] == "water bottle"{
-                    self.controllerToNotify.healthyImageRecognized()
-                } else {
-                    self.controllerToNotify.unhealthyImageRecognized()
-
-                }
                 
                 // TODO: Check a DB if this is healthy or not...
                 //
                 //
                 //
+                
+                // For debugging fake output!
+                switch GlobalSettings.debugMode {
+                case .acceptWater:
+                    self.controllerToNotify.updateStatus(status: .water)
+                case .acceptFood:
+                    self.controllerToNotify.updateStatus(status: .healthy)
+                case .rejectPhoto:
+                    self.controllerToNotify.updateStatus(status: .unhealthy)
+                case .lowConfidence:
+                    self.controllerToNotify.updateStatus(status: .lowConfidence)
+                case .disabled:
+                    break
+                }
+                
+
             }
         }
     }

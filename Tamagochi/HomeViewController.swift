@@ -26,6 +26,8 @@ class HomeViewController: UILoggingViewController, UINavigationControllerDelegat
     // CoreData
     var container: NSPersistentContainer!
     
+    let persistentDataManager =  PersistentDataManager()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -92,6 +94,7 @@ class HomeViewController: UILoggingViewController, UINavigationControllerDelegat
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let feedbackViewController = storyBoard.instantiateViewController(withIdentifier: "feedbackViewController") as! FeedbackViewController
         feedbackViewController.inputImage = inputImage
+        feedbackViewController.coreDataAccess = persistentDataManager
         self.present(feedbackViewController, animated: true, completion: nil)
         
     }
@@ -123,119 +126,26 @@ class HomeViewController: UILoggingViewController, UINavigationControllerDelegat
     
     // Function to update the bars width depending on hunger and thirst of the Tamagotchi
     func updateBars () {
-        updateCurrentHealthStatus()
+        persistentDataManager.updateCurrentHealthStatus()
         // thirsty level
         UIView.animate(withDuration: 1, animations: { () -> Void in
-            let healthStatus = self.readHealthStatus()
+            let healthStatus = self.persistentDataManager.readHealthStatus()
             let barWidth: CGFloat = self.barBackgroundView.frame.width/100 * CGFloat(healthStatus["thirsty"]!)
             self.thirstBar.frame = CGRect(x: self.thirstBar.frame.minX, y: self.thirstBar.frame.minY, width: barWidth, height: self.thirstBar.frame.height)
         })
         
         // hungry level
         UIView.animate(withDuration: 1, animations: { () -> Void in
-            let healthStatus = self.readHealthStatus()
+            let healthStatus = self.persistentDataManager.readHealthStatus()
             let barWidth: CGFloat = self.barBackgroundView.frame.width/100 * CGFloat(healthStatus["hungry"]!)
             self.hungerBar.frame = CGRect(x: self.hungerBar.frame.minX, y: self.hungerBar.frame.minY, width: barWidth, height: self.hungerBar.frame.height)
         })
         
     }
     
-    // MARK: - CoreData access
-    func initHealthStatus(){
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else{
-            return
-        }
-        
-        let managedContext = appDelegate.persistentContainer.viewContext
-        
-        let currentHealthStatusEntity = NSEntityDescription.entity(forEntityName: "HealthStatus", in: managedContext)!
-        
-        let currentHealthStatus = NSManagedObject(entity: currentHealthStatusEntity, insertInto: managedContext)
-        currentHealthStatus.setValue(50, forKey: "hungry")
-        currentHealthStatus.setValue(50, forKey: "thirsty")
-        // 4 hours ago
-        currentHealthStatus.setValue(Date(timeIntervalSinceNow: -(60*60*4)), forKey: "lastPhoto")
-        
-        do{
-            try managedContext.save()
-        } catch let error as NSError {
-            print("Error while writing CoreData! \(error.userInfo)")
-        }
-        print("Initialized CoreData HealthStatus entry")
-    }
-    
-    func readHealthStatus() -> [String: Int]{
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else{
-            return [:]
-        }
-        
-        let managedContext = appDelegate.persistentContainer.viewContext
-        
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "HealthStatus")
-        
-        var healthValues: [String: Int] = [:]
-        
-        do{
-            let result = try managedContext.fetch(fetchRequest)
-            for data in result as! [NSManagedObject] {
-                print("thirsty ", data.value(forKey: "thirsty") as! Int)
-                healthValues["thirsty"] = data.value(forKey: "thirsty") as? Int
-                print("hungry ", data.value(forKey: "hungry") as! Int)
-                healthValues["hungry"] = data.value(forKey: "hungry") as? Int
-            }
-        } catch let error as NSError {
-            print("Error while reading CoreData! \(error.userInfo)")
-        }
-        return healthValues
-    }
-    
-    // TODO decided how much to increase, set date...
-    func updateCurrentHealthStatus(){
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else{
-            return
-        }
-        
-        let managedContext = appDelegate.persistentContainer.viewContext
-        
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "HealthStatus")
-        fetchRequest.fetchLimit = 1
-        
-        do{
-            let results = try managedContext.fetch(fetchRequest)
-            if results.count != 0 {
-                let objectToUpdate = results[0] as! NSManagedObject
-                // TODO: Do the calcuation depending on the date
-                objectToUpdate.setValue(50, forKey: "hungry")
-                objectToUpdate.setValue(50, forKey: "thirsty")
-            }else{
-                throw TamagotchiError.coreDataNotInitialized
-            }
-            
-        } catch {
-            print("Could not update CoreData entry! Try to init now... \(error)")
-            initHealthStatus()
-            
-        }
-        
-        do{
-            let result = try managedContext.fetch(fetchRequest)
-            for data in result as! [NSManagedObject] {
-                print(data.value(forKey: "hungry") as! Int16)
-            }
-        } catch let error as NSError {
-            print("Error while reading CoreData! \(error.userInfo)")
-        }
-    }
-    
-    
     override func didReceiveMemoryWarning() {
         // release stuff, otherwise it gets killed
         print("Memory warning!!!")
-    }
-    
-    
-    enum TamagotchiError: Error{
-        case coreDataNotInitialized
     }
     
 }

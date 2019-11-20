@@ -22,6 +22,7 @@ class FeedbackViewController : UILoggingViewController {
     }
     
     var inputImage : UIImage?
+    var coreDataAccess: PersistentDataManager?
     private var imageClassification : ImageClassification!
     private var status = ImageStatus.unknown
     private var recognizedObject = ""
@@ -75,6 +76,9 @@ class FeedbackViewController : UILoggingViewController {
         case .lowConfidence:
             statusLabel.text = "Nothing recognized"
             self.imageNotRecognized()
+        case .water:
+            statusLabel.text = "Water recognized..."
+            self.healthyImageRecognized()
         }
     }
     
@@ -85,6 +89,24 @@ class FeedbackViewController : UILoggingViewController {
     func healthyImageRecognized(){
         
         feedbackLabel.text = "Wow, \(recognizedObject)... It sounds great!"
+        
+        do{
+            var type : ImageType!
+            switch status {
+            case .healthy:
+                type = ImageType.food
+            case .water:
+                type = ImageType.water
+            default:
+                type = ImageType.unknown
+            }
+            try coreDataAccess!.saveImage(image: inputImage!, status: type)
+        }catch{
+            print(error)
+        }
+        
+        // print just for testing
+        print(coreDataAccess!.retrieveImages(type: ImageType.food))
 
         UIView.animate(withDuration: 0.2, delay: 0.3, options: [], animations: {
             
@@ -154,7 +176,7 @@ class FeedbackViewController : UILoggingViewController {
             }, completion: nil)
         })
     }
-
+    
     func imageNotRecognized(){
         feedbackLabel.text = "I just recognize \(recognizedObject)... But I'm not sure if it's right"
         self.titleLabel.text = "Try again!"
@@ -173,15 +195,3 @@ class FeedbackViewController : UILoggingViewController {
     @IBOutlet weak var feedbackLabel: UILabel!
 }
 
-
-// Enums, Helpers
-
-enum ImageStatus : String {
-    case unknown
-    case processing
-    case healthy
-    case unhealthy
-    case classified
-    case classificationFailed
-    case lowConfidence
-}
