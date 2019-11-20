@@ -23,6 +23,7 @@ class FeedbackViewController : UILoggingViewController {
     
     var inputImage : UIImage?
     var coreDataAccess: PersistentDataManager?
+    var homeViewController : HomeViewController?
     private var imageClassification : ImageClassification!
     private var status = ImageStatus.unknown
     private var recognizedObject = ""
@@ -44,6 +45,7 @@ class FeedbackViewController : UILoggingViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
         if inputImage != nil{
             // view image (maybe not required)
             imageViewer.image = inputImage!
@@ -107,7 +109,7 @@ class FeedbackViewController : UILoggingViewController {
         
         // print just for testing
         print(coreDataAccess!.retrieveImages(type: ImageType.food))
-
+        
         UIView.animate(withDuration: 0.2, delay: 0.3, options: [], animations: {
             
             self.bite1.alpha = 1
@@ -147,7 +149,8 @@ class FeedbackViewController : UILoggingViewController {
                             
                             UIView.animate(withDuration: 0.2, delay: 0.3, options: [], animations: {
                                 
-                                self.dismiss(animated: true, completion: nil)
+
+                                self.dismiss(animated: true, completion: {self.homeViewController?.updateBars()})
                                 
                             }, completion: nil)
                         })

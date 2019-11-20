@@ -22,7 +22,6 @@
 		BE9C62E4237986190088E1AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE9C62E3237986190088E1AB /* Assets.xcassets */; };
 		BE9C62E7237986190088E1AB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE9C62E5237986190088E1AB /* LaunchScreen.storyboard */; };
 		BE9C62EF2379C3570088E1AB /* FeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9C62EE2379C3570088E1AB /* FeedbackViewController.swift */; };
-		BE9C62F12379C39C0088E1AB /* TamagotchiBackend.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9C62F02379C39C0088E1AB /* TamagotchiBackend.swift */; };
 		BEB067BF2383E57000A3FAC6 /* UILoggingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB067BE2383E57000A3FAC6 /* UILoggingViewController.swift */; };
 		BEB067C12383F86600A3FAC6 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB067C02383F86600A3FAC6 /* ProgressView.swift */; };
 		BEB067C5238576A000A3FAC6 /* PersistentDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB067C4238576A000A3FAC6 /* PersistentDataManager.swift */; };
@@ -50,7 +49,6 @@
 		BE9C62E6237986190088E1AB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BE9C62E8237986190088E1AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BE9C62EE2379C3570088E1AB /* FeedbackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackViewController.swift; sourceTree = "<group>"; };
-		BE9C62F02379C39C0088E1AB /* TamagotchiBackend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TamagotchiBackend.swift; sourceTree = "<group>"; };
 		BEB067BE2383E57000A3FAC6 /* UILoggingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UILoggingViewController.swift; sourceTree = "<group>"; };
 		BEB067C02383F86600A3FAC6 /* ProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
 		BEB067C4238576A000A3FAC6 /* PersistentDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentDataManager.swift; sourceTree = "<group>"; };
@@ -118,7 +116,6 @@
 				7CD93984237D8E2E0020C35E /* UIViewExtension.swift */,
 				BE9C62EE2379C3570088E1AB /* FeedbackViewController.swift */,
 				BEB067C02383F86600A3FAC6 /* ProgressView.swift */,
-				BE9C62F02379C39C0088E1AB /* TamagotchiBackend.swift */,
 				1283E518237D8A9800C53692 /* DisplayAnimation.swift */,
 				BEB067C4238576A000A3FAC6 /* PersistentDataManager.swift */,
 				BEB067C82385A17400A3FAC6 /* StoredImage.swift */,
@@ -213,7 +210,6 @@
 				BE9C62DB237986170088E1AB /* AppDelegate.swift in Sources */,
 				BE9C62DD237986170088E1AB /* SceneDelegate.swift in Sources */,
 				BEC8EE43237AE3D900C58B14 /* ImageClassification.swift in Sources */,
-				BE9C62F12379C39C0088E1AB /* TamagotchiBackend.swift in Sources */,
 				7CA48CDD2382B8710061C1C8 /* SettingsViewController.swift in Sources */,
 				7CB22BEF237EB8FE009DDB7A /* TutorialViewController.swift in Sources */,
 				BE9C62EF2379C3570088E1AB /* FeedbackViewController.swift in Sources */,

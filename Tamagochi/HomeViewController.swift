@@ -46,15 +46,15 @@ class HomeViewController: UILoggingViewController, UINavigationControllerDelegat
         // update data
     }
     
+    func presentationControllerDidDismiss(_ presentationController: UIPresentationController){
+        // we have to update the bars after the image was scanned
+        updateBars()
+    }
     
     override func viewDidAppear(_ animated: Bool) {
         // update outlets
         
-        // Updating hunger and thirst bars
-        updateBars()
-        
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
-            // TODO: wait 1 second
             
             // Check if it's the first launch of the app to show the Tutorial
             let launchedBefore = UserDefaults.standard.bool(forKey: "launchedBefore")
@@ -66,6 +66,9 @@ class HomeViewController: UILoggingViewController, UINavigationControllerDelegat
                 self.performSegue(withIdentifier: "tutorial", sender: nil)
             }
         }
+        
+        // Updating hunger and thirst bars
+        updateBars()
     }
     
     
@@ -96,6 +99,7 @@ class HomeViewController: UILoggingViewController, UINavigationControllerDelegat
         let feedbackViewController = storyBoard.instantiateViewController(withIdentifier: "feedbackViewController") as! FeedbackViewController
         feedbackViewController.inputImage = inputImage
         feedbackViewController.coreDataAccess = persistentDataManager
+        feedbackViewController.homeViewController = self
         self.present(feedbackViewController, animated: true, completion: nil)
         
     }
@@ -127,16 +131,22 @@ class HomeViewController: UILoggingViewController, UINavigationControllerDelegat
     
     // Function to update the bars width depending on hunger and thirst of the Tamagotchi
     func updateBars () {
+        
+        var healthStatus = self.persistentDataManager.readHealthStatus()
+        
+        if healthStatus.count == 0 {
+            self.persistentDataManager.initHealthStatus()
+            healthStatus = self.persistentDataManager.readHealthStatus()
+        }
+        
         // thirsty level
         UIView.animate(withDuration: 1, animations: { () -> Void in
-            let healthStatus = self.persistentDataManager.readHealthStatus()
             let barWidth: CGFloat = self.barBackgroundView.frame.width/100 * CGFloat(healthStatus["thirsty"]!)
             self.thirstBar.frame = CGRect(x: self.thirstBar.frame.minX, y: self.thirstBar.frame.minY, width: barWidth, height: self.thirstBar.frame.height)
         })
         
         // hungry level
         UIView.animate(withDuration: 1, animations: { () -> Void in
-            let healthStatus = self.persistentDataManager.readHealthStatus()
             let barWidth: CGFloat = self.barBackgroundView.frame.width/100 * CGFloat(healthStatus["hungry"]!)
             self.hungerBar.frame = CGRect(x: self.hungerBar.frame.minX, y: self.hungerBar.frame.minY, width: barWidth, height: self.hungerBar.frame.height)
         })
