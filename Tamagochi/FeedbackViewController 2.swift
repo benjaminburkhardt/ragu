@@ -15,7 +15,7 @@ import AVFoundation
  The sees now if the picture was accepted.
  */
 
-class FeedbackViewController : UILoggingViewController {
+class FeedbackViewController : UIViewController {
     
     @IBAction func closeFeedback(_ sender: Any) {
         dismiss(animated: true, completion: nil)
@@ -24,7 +24,6 @@ class FeedbackViewController : UILoggingViewController {
     var inputImage : UIImage?
     private var imageClassification : ImageClassification!
     private var status = ImageStatus.unknown
-    private var recognizedObject = ""
     
     // CoreData
     var container: NSPersistentContainer!
@@ -62,30 +61,20 @@ class FeedbackViewController : UILoggingViewController {
             statusLabel.text = "Classification..."
         case .unknown:
             statusLabel.text = "Unknow status..."
-        case .classificationFailed:
-            statusLabel.text = "Classification failed..."
-        case .classified:
-            statusLabel.text = "Classification finished..."
         case .healthy:
             statusLabel.text = "The food is healty!"
-            self.healthyImageRecognized()
         case .unhealthy:
             statusLabel.text = "The food in unhealthy!"
-            self.unhealthyImageRecognized()
-        case .lowConfidence:
-            statusLabel.text = "Nothing recognized"
-            self.imageNotRecognized()
+        case .classified:
+            statusLabel.text = "Classification finished..."
+        case .classificationFailed:
+            statusLabel.text = "Classification failed..."
         }
     }
     
-    func updateRecognizedObject(recognizedObject : String){
-        self.recognizedObject = recognizedObject
-    }
     
     func healthyImageRecognized(){
         
-        feedbackLabel.text = "Wow, \(recognizedObject)... It sounds great!"
-
         UIView.animate(withDuration: 0.2, delay: 0.3, options: [], animations: {
             
             self.bite1.alpha = 1
@@ -97,7 +86,6 @@ class FeedbackViewController : UILoggingViewController {
                 
                 self.bite2.alpha = 1
                 self.titleLabel.text = "Yummy!"
-                self.statusLabel.text = "I really like this"
                 self.titleLabel.textColor = UIColor.green
                 
             }, completion: { (position) in
@@ -136,8 +124,6 @@ class FeedbackViewController : UILoggingViewController {
     }
     
     func unhealthyImageRecognized(){
-        feedbackLabel.text = "You tried to feed me with \(recognizedObject)... Try something different!"
-        
         UIView.animate(withDuration: 0.2, delay: 0.3, options: [], animations: {
             
             self.bite1.alpha = 1
@@ -156,10 +142,18 @@ class FeedbackViewController : UILoggingViewController {
     }
 
     func imageNotRecognized(){
-        feedbackLabel.text = "I just recognize \(recognizedObject)... But I'm not sure if it's right"
-        self.titleLabel.text = "Try again!"
-        self.statusLabel.text = "Image not recognized or not so clear"
-        self.sadFace.alpha = 1
+        myAlert(title: "Error", message: "Image not recognized")
+    }
+    
+    func myAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        self.titleLabel.text = "Error!"
+        self.statusLabel.text = ""
+        alert.addAction(UIAlertAction(title: "Try again", style: .default, handler: { (action) in
+            alert.dismiss(animated: true, completion: nil)
+            self.dismiss(animated: true, completion: nil)
+        }))
+        self.present(alert, animated: true, completion: nil)
     }
     
     @IBOutlet weak var statusLabel: UILabel!
@@ -169,8 +163,6 @@ class FeedbackViewController : UILoggingViewController {
     @IBOutlet weak var bite3: UIImageView!
     @IBOutlet weak var bite4: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var sadFace: UIImageView!
-    @IBOutlet weak var feedbackLabel: UILabel!
 }
 
 
@@ -183,5 +175,4 @@ enum ImageStatus : String {
     case unhealthy
     case classified
     case classificationFailed
-    case lowConfidence
 }
