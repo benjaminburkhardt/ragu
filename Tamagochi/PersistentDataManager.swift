@@ -19,7 +19,7 @@ public class PersistentDataManager{
     
     init(){
         self.appDelegate = UIApplication.shared.delegate as! AppDelegate
-    
+        
         self.managedContext = appDelegate.persistentContainer.viewContext
         
     }
@@ -71,14 +71,15 @@ public class PersistentDataManager{
     
     
     // MARK: - CoreData access
+    
     func initHealthStatus(){
         let currentHealthStatusEntity = NSEntityDescription.entity(forEntityName: "HealthStatus", in: managedContext)!
         
         let currentHealthStatus = NSManagedObject(entity: currentHealthStatusEntity, insertInto: managedContext)
-        currentHealthStatus.setValue(50, forKey: "hungry")
-        currentHealthStatus.setValue(50, forKey: "thirsty")
+        
         // 4 hours ago
-        currentHealthStatus.setValue(Date(timeIntervalSinceNow: -(60*60*4)), forKey: "lastPhoto")
+        currentHealthStatus.setValue(Calendar.current.date(byAdding: .hour, value: -4, to: Date()), forKey: "lastPhotoFood")
+        currentHealthStatus.setValue(Calendar.current.date(byAdding: .hour, value: -4, to: Date()), forKey: "lastPhotoWater")
         
         do{
             try managedContext.save()
@@ -95,11 +96,38 @@ public class PersistentDataManager{
         
         do{
             let result = try managedContext.fetch(fetchRequest)
+            let multiplier: Double = (100 / (12*60*60))
             for data in result as! [NSManagedObject] {
-                print("thirsty ", data.value(forKey: "thirsty") as! Int)
-                healthValues["thirsty"] = data.value(forKey: "thirsty") as? Int
-                print("hungry ", data.value(forKey: "hungry") as! Int)
-                healthValues["hungry"] = data.value(forKey: "hungry") as? Int
+                
+                
+                // FOOD
+                print("lastPhotoFood ", data.value(forKey: "lastPhotoFood") as! Date)
+                
+                let dateLastPhoto = data.value(forKey: "lastPhotoFood") as! Date
+                let timeSinceLastFood : TimeInterval = dateLastPhoto.distance(to: Date())
+                print("timeSinceLastFood", timeSinceLastFood)
+                healthValues["hungry"] = 100 - Int(Double(timeSinceLastFood) * multiplier)
+                
+                print("hungry level \(String(describing: healthValues["hungry"]))")
+                
+                // dies after 24h without food
+                if (timeSinceLastFood > (24*60*60)) && (timeSinceLastFood < (24*60*60)) {
+                    healthValues["hungry"] = 5
+                }
+                
+                // WATER
+                print("lastPhotoWater ", data.value(forKey: "lastPhotoWater") as! Date)
+                let dateLastPhotoWater = data.value(forKey: "lastPhotoWater") as! Date
+                let timeSinceLastWater : TimeInterval = dateLastPhotoWater.distance(to: Date())
+                print("timeSinceLastWater", timeSinceLastWater)
+                healthValues["thirsty"] = 100 - Int(Double(timeSinceLastWater) * multiplier)
+                
+                print("water level \(String(describing: healthValues["thirsty"]))")
+                
+                // dies after 24h without food
+                if (timeSinceLastWater > (24*60*60)) && (timeSinceLastWater < (24*60*60)) {
+                    healthValues["thirsty"] = 5
+                }
             }
         } catch let error as NSError {
             print("Error while reading CoreData! \(error.userInfo)")
@@ -108,7 +136,7 @@ public class PersistentDataManager{
     }
     
     // TODO decided how much to increase, set date...
-    func updateCurrentHealthStatus(){
+    func updateLastPhotoDate(forType: ImageType){
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "HealthStatus")
         fetchRequest.fetchLimit = 1
         
@@ -117,8 +145,14 @@ public class PersistentDataManager{
             if results.count != 0 {
                 let objectToUpdate = results[0] as! NSManagedObject
                 // TODO: Do the calcuation depending on the date
-                objectToUpdate.setValue(50, forKey: "hungry")
-                objectToUpdate.setValue(50, forKey: "thirsty")
+                switch forType{
+                case .food:
+                    objectToUpdate.setValue(Date(), forKey: "lastPhotoFood")
+                case .water:
+                    objectToUpdate.setValue(Date(), forKey: "lastPhotoWater")
+                case .unknown:
+                    print("Error, cannot set date value!")
+                }
             }else{
                 throw TamagotchiError.coreDataNotInitialized
             }
@@ -129,12 +163,9 @@ public class PersistentDataManager{
         }
         
         do{
-            let result = try managedContext.fetch(fetchRequest)
-            for data in result as! [NSManagedObject] {
-                print(data.value(forKey: "hungry") as! Int16)
-            }
+            try managedContext.save()
         } catch let error as NSError {
-            print("Error while reading CoreData! \(error.userInfo)")
+            print("Error while writing CoreData! \(error.userInfo)")
         }
     }
     
@@ -158,8 +189,11 @@ public class PersistentDataManager{
         do{
             try managedContext.save()
         } catch let error as NSError {
-            print("Error while writing image to CoreData! \(error.userInfo)")
+            print("Error while writing updated image dates to CoreData! \(error.userInfo)")
         }
+        
+        updateLastPhotoDate(forType: status)
+        
         print("Stored image and saved path in CoreData")
     }
     

@@ -54,17 +54,17 @@ class HomeViewController: UILoggingViewController, UINavigationControllerDelegat
         updateBars()
         
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
-        // TODO: wait 1 second
-        
-        // Check if it's the first launch of the app to show the Tutorial
-        let launchedBefore = UserDefaults.standard.bool(forKey: "launchedBefore")
-        if launchedBefore  {
-            print("Not first launch.")
-        } else {
-            print("First launch, setting UserDefault.")
-            UserDefaults.standard.set(true, forKey: "launchedBefore")
-            self.performSegue(withIdentifier: "tutorial", sender: nil)
-        }
+            // TODO: wait 1 second
+            
+            // Check if it's the first launch of the app to show the Tutorial
+            let launchedBefore = UserDefaults.standard.bool(forKey: "launchedBefore")
+            if launchedBefore  {
+                print("Not first launch.")
+            } else {
+                print("First launch, setting UserDefault.")
+                UserDefaults.standard.set(true, forKey: "launchedBefore")
+                self.performSegue(withIdentifier: "tutorial", sender: nil)
+            }
         }
     }
     
@@ -127,7 +127,6 @@ class HomeViewController: UILoggingViewController, UINavigationControllerDelegat
     
     // Function to update the bars width depending on hunger and thirst of the Tamagotchi
     func updateBars () {
-        persistentDataManager.updateCurrentHealthStatus()
         // thirsty level
         UIView.animate(withDuration: 1, animations: { () -> Void in
             let healthStatus = self.persistentDataManager.readHealthStatus()
