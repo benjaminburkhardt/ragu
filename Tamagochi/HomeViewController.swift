@@ -51,6 +51,7 @@ class HomeViewController: UILoggingViewController, UINavigationControllerDelegat
         // Updating hunger and thirst bars
         updateBars()
         
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
         // TODO: wait 1 second
         
         // Check if it's the first launch of the app to show the Tutorial
@@ -60,9 +61,9 @@ class HomeViewController: UILoggingViewController, UINavigationControllerDelegat
         } else {
             print("First launch, setting UserDefault.")
             UserDefaults.standard.set(true, forKey: "launchedBefore")
-            performSegue(withIdentifier: "tutorial", sender: nil)
+            self.performSegue(withIdentifier: "tutorial", sender: nil)
         }
-        
+        }
     }
     
     
