@@ -48,6 +48,11 @@ class HomeViewController: UILoggingViewController, UINavigationControllerDelegat
     override func viewDidAppear(_ animated: Bool) {
         // update outlets
         
+        // Updating hunger and thirst bars
+        updateBars()
+        
+        // TODO: wait 1 second
+        
         // Check if it's the first launch of the app to show the Tutorial
         let launchedBefore = UserDefaults.standard.bool(forKey: "launchedBefore")
         if launchedBefore  {
@@ -58,8 +63,6 @@ class HomeViewController: UILoggingViewController, UINavigationControllerDelegat
             performSegue(withIdentifier: "tutorial", sender: nil)
         }
         
-        // Updating hunger and thirst bars
-        updateBars()
     }
     
     
