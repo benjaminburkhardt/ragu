@@ -22,7 +22,9 @@ class HomeViewController: UILoggingViewController, UINavigationControllerDelegat
     @IBOutlet weak var journeyIcon: UIButton!
     @IBOutlet weak var settingsIcon: UIButton!
     @IBOutlet weak var feedMeButton: UIButton!
-    
+    @IBOutlet weak var daysRemaningAnimation: UIImageView!
+    @IBOutlet weak var daysRemaining: UILabel!
+        
     // CoreData
     var container: NSPersistentContainer!
     
@@ -40,6 +42,9 @@ class HomeViewController: UILoggingViewController, UINavigationControllerDelegat
         guard container != nil else {
             fatalError("This view needs a persistent container.")
         }
+        
+        // start animation for challenge times
+        runContinuously()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -69,6 +74,7 @@ class HomeViewController: UILoggingViewController, UINavigationControllerDelegat
         
         // Updating hunger and thirst bars
         updateBars()
+
     }
     
     
@@ -127,6 +133,16 @@ class HomeViewController: UILoggingViewController, UINavigationControllerDelegat
         
         view.backgroundColor = GlobalSettings.colors[0]
         feedMeButton.backgroundColor = GlobalSettings.colors[4]
+    }
+    
+    @objc func runContinuously(){
+        UIView.animate(withDuration: 5.0, animations: {
+        self.daysRemaningAnimation.transform = CGAffineTransform(rotationAngle: (180.0 * .pi) / 180.0)
+        })
+        Timer.scheduledTimer(withTimeInterval: 5.1, repeats: false) { (timer) in
+            self.daysRemaningAnimation.transform = CGAffineTransform(rotationAngle: 0)
+            self.runContinuously()
+        }
     }
     
     // Function to update the bars width depending on hunger and thirst of the Tamagotchi
