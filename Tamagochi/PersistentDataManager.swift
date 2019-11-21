@@ -111,8 +111,11 @@ public class PersistentDataManager{
                 print("hungry level \(String(describing: healthValues["hungry"]))")
                 
                 // dies after 24h without food
-                if (timeSinceLastFood > (24*60*60)) && (timeSinceLastFood < (24*60*60)) {
+                if (timeSinceLastFood > (12*60*60)) && (timeSinceLastFood < (24*60*60)) {
                     healthValues["hungry"] = 5
+                }
+                if (timeSinceLastFood > (24*60*60)){
+                    healthValues["hungry"] = 0
                 }
                 
                 // WATER
@@ -125,8 +128,11 @@ public class PersistentDataManager{
                 print("water level \(String(describing: healthValues["thirsty"]))")
                 
                 // dies after 24h without food
-                if (timeSinceLastWater > (24*60*60)) && (timeSinceLastWater < (24*60*60)) {
+                if (timeSinceLastWater > (12*60*60)) && (timeSinceLastWater < (24*60*60)) {
                     healthValues["thirsty"] = 5
+                }
+                if (timeSinceLastFood > (24*60*60)){
+                    healthValues["thirsty"] = 0
                 }
             }
         } catch let error as NSError {
