@@ -92,20 +92,31 @@ class FeedbackViewController : UILoggingViewController {
         
         feedbackLabel.text = "Wow, \(recognizedObject)... It sounds great!"
         
+        var type : ImageType!
+        switch status {
+        case .healthy:
+            type = ImageType.food
+        case .water:
+            type = ImageType.water
+        default:
+            type = ImageType.unknown
+        }
+        
         do{
-            var type : ImageType!
-            switch status {
-            case .healthy:
-                type = ImageType.food
-            case .water:
-                type = ImageType.water
-            default:
-                type = ImageType.unknown
-            }
-            try coreDataAccess!.saveImage(image: inputImage!, status: type)
+        try coreDataAccess!.saveImage(image: inputImage!, status: type)
         }catch{
             print(error)
         }
+        
+        // TODO: @Alessio - set timer for notification in 4 hours
+        // no notifacitons between 9pm and 8am
+
+        if (type == ImageType.food){
+            // food notification
+        }else if(type == ImageType.water){
+            // water notification
+        }
+        
         
         // print just for testing
         print(coreDataAccess!.retrieveImages(type: ImageType.food))
@@ -116,7 +127,6 @@ class FeedbackViewController : UILoggingViewController {
             
         }, completion: { (position) in
             
-            
             UIView.animate(withDuration: 0.2, delay: 0.3, options: [], animations: {
                 
                 self.bite2.alpha = 1
@@ -126,14 +136,11 @@ class FeedbackViewController : UILoggingViewController {
                 
             }, completion: { (position) in
                 
-                
                 UIView.animate(withDuration: 0.2, delay: 0.3, options: [], animations: {
                     
                     self.bite3.alpha = 1
                     
-                    
                 }, completion: { (position) in
-                    
                     
                     UIView.animate(withDuration: 0.2, delay: 0.3, options: [], animations: {
                         
@@ -148,7 +155,6 @@ class FeedbackViewController : UILoggingViewController {
                         }, completion: { (position) in
                             
                             UIView.animate(withDuration: 0.2, delay: 0.3, options: [], animations: {
-                                
 
                                 self.dismiss(animated: true, completion: {self.homeViewController?.updateBars()})
                                 

@@ -84,7 +84,7 @@ class ImageClassification : UIViewController {
                 self.controllerToNotify.updateStatus(status: ImageStatus.classificationFailed)
             } else {
                 // Display top classifications ranked by confidence in the UI.
-                let topXToCheck = 3
+                let topXToCheck = 5
                 let topClassifications = classifications.prefix(topXToCheck)
                 var recognized = [String]()
                 var confidence : Float = 0
@@ -104,10 +104,115 @@ class ImageClassification : UIViewController {
                 self.controllerToNotify.updateRecognizedObject(recognizedObject: recognized[0])
                 
                 
-                // TODO: Check a DB if this is healthy or not...
-                //
-                //
-                //
+                // TODO:
+                
+                let veggies = [
+                    "carrot",
+                    "broccoli",
+                    "asparagus",
+                    "cauliflower",
+                    "corn",
+                    "cucumber",
+                    "eggplant",
+                    "green pepper",
+                    "lettuce",
+                    "mushrooms",
+                    "onion",
+                    "potato",
+                    "pumpkin",
+                    "red pepper",
+                    "tomato",
+                    "beetroot",
+                    "brussel sprouts",
+                    "peas",
+                    "zucchini",
+                    "radish",
+                    "sweet potato",
+                    "artichoke",
+                    "leek",
+                    "cabbage",
+                    "celery",
+                    "chili",
+                    "garlic",
+                    "basil",
+                    "coriander",
+                    "parsley",
+                    "dill",
+                    "rosemary",
+                    "oregano",
+                    "cinnamon",
+                    "saffron",
+                    "green bean",
+                    "bean",
+                    "chickpea",
+                    "lentil"]
+                
+                let fruits = [
+                    "grapes",
+                    "lime",
+                    "lemon",
+                    "cherry",
+                    "blueberry",
+                    "banana",
+                    "apple",
+                    "watermelon",
+                    "peach",
+                    "pineapple",
+                    "strawberry",
+                    "orange",
+                    "coconut",
+                    "pear",
+                    "apricot",
+                    "avocado",
+                    "blackberry",
+                    "grapefruit",
+                    "kiwi",
+                    "mango",
+                    "plum",
+                    "raspberry",
+                    "pomegranate",
+                    "fig",
+                    "passion fruit",
+                    "tangerine",
+                    "papaya"]
+                
+                let water = [
+                    "bottle",
+                    "water"]
+                
+                var found: String = ""
+                
+                if(confidence < 0.1){
+                    print("Confidence too low!!")
+                    self.controllerToNotify.updateStatus(status: .lowConfidence)
+                    
+                }else{
+                    // search for healthy stuff
+                    for item in self.result{
+                        for healthyFood in (veggies+fruits){
+                            if(item.contains(healthyFood)){
+                                found = healthyFood
+                                print("Found \(found)")
+                                self.controllerToNotify.updateStatus(status: .healthy)
+                                break
+                            }
+                        }
+                        
+                        for healthyWater in (water){
+                            if(item.contains(healthyWater)){
+                                found = healthyWater
+                                print("Found \(found)")
+                                self.controllerToNotify.updateStatus(status: .water)
+                                break
+                            }
+                        }
+                    }
+                }
+                
+                // nothing found :(
+                if(found == ""){
+                    self.controllerToNotify.updateStatus(status: .unhealthy)
+                }
                 
                 // For debugging fake output!
                 switch GlobalSettings.debugMode {
@@ -123,7 +228,7 @@ class ImageClassification : UIViewController {
                     break
                 }
                 
-
+                
             }
         }
     }
