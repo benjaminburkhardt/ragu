@@ -17,7 +17,7 @@ class NotificationManager: NSObject, UNUserNotificationCenterDelegate{
      Ask permission to send local notifications
      */
     func requestAuthorization(){
-        let options: UNAuthorizationOptions = [.alert, .sound, .badge]
+        let options: UNAuthorizationOptions = [.alert, .sound]
         
         notificationCenter.requestAuthorization(options: options) { (granted, error) in
 
