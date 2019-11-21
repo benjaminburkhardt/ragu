@@ -17,6 +17,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         UILoggingViewController.logging = false
+        
+        
+        //AppDelegate is the delegate of the shared UNUserNotificationCenter istance
+        UNUserNotificationCenter.current().delegate = self
+        
+        //Permission request
+        let manager = NotificationManager()
+        manager.requestAuthorization()
+        
         return true
     }
     
@@ -81,3 +90,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 }
 
+extension AppDelegate: UNUserNotificationCenterDelegate {
+    
+    //Handle incoming local notifications when the app is closed or in background
+    // called when the app starts from a tapped notification
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void)
+    {
+        let id = response.notification.request.identifier
+        print("Received notification with ID = \(id)")
+
+        completionHandler()
+    }
+    
+    //Handle incoming local notifications when the app is running and in the foreground
+    // called when the notification is tapped
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void)
+    {
+        let id = notification.request.identifier
+        print("Received notification with ID = \(id)")
+
+        completionHandler([.sound, .alert])
+    }
+}
