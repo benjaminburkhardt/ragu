@@ -7,6 +7,8 @@
 //
 import UIKit
 import CoreData
+import SceneKit
+
 
 /*
  This represents the main scene. The Tamagotchi is shown here.
@@ -24,11 +26,22 @@ class HomeViewController: UILoggingViewController, UINavigationControllerDelegat
     @IBOutlet weak var feedMeButton: UIButton!
     @IBOutlet weak var daysRemaningAnimation: UIImageView!
     @IBOutlet weak var daysRemaining: UILabel!
-        
+    @IBOutlet weak var tamagotchiView: SCNView!
+    
     // CoreData
     var container: NSPersistentContainer!
-    
     let persistentDataManager =  PersistentDataManager()
+    
+    //    animations var
+        var myScene = SCNScene()
+        var cameraNode = SCNNode()
+        var idle:Bool = true
+        enum humor {
+            case still, eating, drinking, waiting, dancing, angry
+        }
+    //    value to switch to change the animation
+        var animation = humor.still
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,7 +55,21 @@ class HomeViewController: UILoggingViewController, UINavigationControllerDelegat
         guard container != nil else {
             fatalError("This view needs a persistent container.")
         }
-        
+        // switch animation for challenge times
+        switch animation {
+            case humor.still:
+                animateWith(animation: "art.scnassets/goast/idleFixed.dae")
+            case humor.eating:
+                animateWith(animation: "art.scnassets/goast/eatingFixed.dae")
+            case humor.drinking:
+                animateWith(animation: "art.scnassets/goast/drinkingFixed.dae")
+            case humor.waiting:
+                animateWith(animation: "art.scnassets/goast/angryFixed.dae")
+            case humor.dancing:
+                animateWith(animation: "art.scnassets/goast/dancingFixed.dae")
+            case humor.angry:
+                animateWith(animation: "art.scnassets/goast/kickFixed.dae")
+        }
         // start animation for challenge times
         runContinuously()
     }
@@ -179,4 +206,24 @@ class HomeViewController: UILoggingViewController, UINavigationControllerDelegat
         print("Memory warning!!!")
     }
     
+    
+    func animateWith (animation: String) {
+        // Load the character in the idle animation
+        let newScene = SCNScene()
+        tamagotchiView.scene = newScene
+        let idleScene = SCNScene(named: animation)!
+        // Contains the hole animation
+        let node = SCNNode()
+        // Add all animation nodes to a parent node
+        for child in idleScene.rootNode.childNodes {
+            node.addChildNode(child)
+        }
+        // Set up properties
+        node.position = SCNVector3(0, -1, -2)
+        node.scale = SCNVector3(0.2, 0.2, 1)
+        // Add the animations node to the scene
+        tamagotchiView.backgroundColor = .orange
+        tamagotchiView.scene?.rootNode.addChildNode(node)
+        // Load all the DAE animations
+    }
 }

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -15,7 +15,7 @@
         <!--Home View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="HomeViewController" customModule="Tamagochi" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="HomeViewController" customModule="Grunchy" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -125,13 +125,7 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bottle" translatesAutoresizingMaskIntoConstraints="NO" id="FgA-Bs-oMY">
                                 <rect key="frame" x="45" y="648" width="41" height="42"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Placeholder for the Tamagotchi" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NpI-Cu-tHp">
-                                <rect key="frame" x="88" y="369" width="237" height="20"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="md8-9h-cy2">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="md8-9h-cy2">
                                 <rect key="frame" x="340" y="59" width="54" height="54"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="35"/>
                                 <state key="normal" title="􀍟">
@@ -141,7 +135,7 @@
                                     <segue destination="7hF-fC-UCb" kind="show" id="9mi-Tr-Fbm"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I49-dO-wb8">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I49-dO-wb8">
                                 <rect key="frame" x="20" y="59" width="54" height="54"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="35"/>
                                 <state key="normal" title="􀙊">
@@ -170,18 +164,23 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="camera-2" translatesAutoresizingMaskIntoConstraints="NO" id="8lb-q1-3IA">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="camera-2" translatesAutoresizingMaskIntoConstraints="NO" id="8lb-q1-3IA">
                                 <rect key="frame" x="180.5" y="758" width="53.000000000000057" height="58"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <sceneKitView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zGB-Gv-Hox">
+                                <rect key="frame" x="20" y="158" width="374" height="376"/>
+                            </sceneKitView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="0Eg-aN-LgJ" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="603" id="0Tr-pQ-fGs"/>
                             <constraint firstItem="dyv-Ij-ev2" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="95" id="2uF-hm-2bp"/>
+                            <constraint firstItem="zGB-Gv-Hox" firstAttribute="top" secondItem="8DC-Ug-qcL" secondAttribute="bottom" constant="32" id="3e5-a8-CT0"/>
                             <constraint firstItem="8DC-Ug-qcL" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="2" id="3zb-Oj-snW"/>
+                            <constraint firstItem="zGB-Gv-Hox" firstAttribute="centerX" secondItem="8lb-q1-3IA" secondAttribute="centerX" id="5eR-wu-SY8"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="jgj-8D-2cJ" secondAttribute="trailing" constant="44" id="7bk-2e-PbZ"/>
                             <constraint firstItem="jgj-8D-2cJ" firstAttribute="leading" secondItem="0Eg-aN-LgJ" secondAttribute="leading" id="8DK-Tu-TrK"/>
+                            <constraint firstItem="gF6-Y5-thl" firstAttribute="top" secondItem="zGB-Gv-Hox" secondAttribute="bottom" constant="54" id="ARw-Of-Waf"/>
                             <constraint firstItem="jgj-8D-2cJ" firstAttribute="top" secondItem="0Eg-aN-LgJ" secondAttribute="bottom" constant="33" id="AUp-xh-Wqe"/>
                             <constraint firstItem="bJp-fC-K3F" firstAttribute="top" secondItem="jgj-8D-2cJ" secondAttribute="bottom" constant="59" id="Al7-mt-fVW"/>
                             <constraint firstItem="jgj-8D-2cJ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="96" id="Dki-Qc-sDM"/>
@@ -190,24 +189,25 @@
                             <constraint firstItem="jgj-8D-2cJ" firstAttribute="leading" secondItem="FgA-Bs-oMY" secondAttribute="trailing" constant="10" id="IUq-Pc-FRX"/>
                             <constraint firstItem="8DC-Ug-qcL" firstAttribute="centerY" secondItem="I49-dO-wb8" secondAttribute="centerY" id="IVa-ZP-caK"/>
                             <constraint firstItem="bJp-fC-K3F" firstAttribute="centerX" secondItem="8DC-Ug-qcL" secondAttribute="centerX" id="KDi-Gw-6Ye"/>
+                            <constraint firstItem="zGB-Gv-Hox" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="LbG-2R-nM6"/>
                             <constraint firstItem="0Eg-aN-LgJ" firstAttribute="leading" secondItem="gF6-Y5-thl" secondAttribute="trailing" constant="10" id="MY9-EJ-SaV"/>
                             <constraint firstItem="bJp-fC-K3F" firstAttribute="centerX" secondItem="eVj-5K-17I" secondAttribute="centerX" id="SnU-mI-QYE"/>
-                            <constraint firstItem="NpI-Cu-tHp" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="369" id="Uig-TS-HSZ"/>
                             <constraint firstItem="jgj-8D-2cJ" firstAttribute="centerY" secondItem="FgA-Bs-oMY" secondAttribute="centerY" id="WnG-ua-mzf"/>
                             <constraint firstItem="bJp-fC-K3F" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="159" id="baw-um-oVA"/>
-                            <constraint firstItem="NpI-Cu-tHp" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="88" id="dja-5y-GQ3"/>
                             <constraint firstItem="gF6-Y5-thl" firstAttribute="leading" secondItem="FgA-Bs-oMY" secondAttribute="leading" id="dx3-dw-JfR"/>
+                            <constraint firstItem="zGB-Gv-Hox" firstAttribute="centerX" secondItem="dyv-Ij-ev2" secondAttribute="centerX" id="eqo-37-NkU"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="bJp-fC-K3F" secondAttribute="bottom" constant="27" id="fNO-JZ-fdF"/>
                             <constraint firstItem="bJp-fC-K3F" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="guz-PT-OMk"/>
                             <constraint firstItem="8DC-Ug-qcL" firstAttribute="centerY" secondItem="md8-9h-cy2" secondAttribute="centerY" id="hHa-Jr-epI"/>
                             <constraint firstAttribute="bottom" secondItem="gF6-Y5-thl" secondAttribute="bottom" constant="263.00000000000011" id="lUr-mL-6dk"/>
                             <constraint firstItem="jgj-8D-2cJ" firstAttribute="trailing" secondItem="0Eg-aN-LgJ" secondAttribute="trailing" id="mYZ-Bd-x1o"/>
+                            <constraint firstItem="zGB-Gv-Hox" firstAttribute="trailing" secondItem="md8-9h-cy2" secondAttribute="trailing" id="mdf-iT-bld"/>
                             <constraint firstItem="dyv-Ij-ev2" firstAttribute="top" secondItem="eVj-5K-17I" secondAttribute="bottom" constant="4" id="nTs-j7-ojU"/>
                             <constraint firstItem="jgj-8D-2cJ" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="658" id="qPU-4s-f6H"/>
                             <constraint firstItem="FgA-Bs-oMY" firstAttribute="top" secondItem="gF6-Y5-thl" secondAttribute="bottom" constant="15.000000000000114" id="rXF-BY-y7P"/>
                             <constraint firstItem="gF6-Y5-thl" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="45" id="tbm-td-w0Z"/>
+                            <constraint firstItem="zGB-Gv-Hox" firstAttribute="leading" secondItem="I49-dO-wb8" secondAttribute="leading" id="tfi-Hz-0qm"/>
                             <constraint firstItem="bJp-fC-K3F" firstAttribute="centerX" secondItem="dyv-Ij-ev2" secondAttribute="centerX" id="uau-Dd-CSd"/>
-                            <constraint firstItem="bJp-fC-K3F" firstAttribute="centerX" secondItem="NpI-Cu-tHp" secondAttribute="centerX" id="zbq-xx-Y9M"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -219,6 +219,7 @@
                         <outlet property="hungerBar" destination="ywx-Lu-24R" id="a7R-2n-IiS"/>
                         <outlet property="journeyIcon" destination="I49-dO-wb8" id="wDh-bV-e1p"/>
                         <outlet property="settingsIcon" destination="md8-9h-cy2" id="PpK-X9-k66"/>
+                        <outlet property="tamagotchiView" destination="zGB-Gv-Hox" id="6I8-l2-WH1"/>
                         <outlet property="thirstBar" destination="oBc-gU-GVz" id="B4e-Pg-4xJ"/>
                         <segue destination="bm2-eq-EXh" kind="presentation" identifier="tutorial" id="NGb-fV-H0i"/>
                     </connections>
@@ -230,7 +231,7 @@
         <!--Feedback View Controller-->
         <scene sceneID="bnw-7a-ICS">
             <objects>
-                <viewController storyboardIdentifier="feedbackViewController" id="VID-qX-rbu" customClass="FeedbackViewController" customModule="Tamagochi" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="feedbackViewController" id="VID-qX-rbu" customClass="FeedbackViewController" customModule="Grunchy" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3pO-lF-s08">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -359,7 +360,7 @@
         <!--LatestPicturesViewController-->
         <scene sceneID="zPl-9G-XZ5">
             <objects>
-                <viewController title="LatestPicturesViewController" id="Fam-ek-Yjg" customClass="LatestPhotosViewController" customModule="Tamagochi" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="LatestPicturesViewController" id="Fam-ek-Yjg" customClass="LatestPhotosViewController" customModule="Grunchy" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Juc-Cr-N1j">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -375,7 +376,7 @@
         <!--Tutorial View Controller-->
         <scene sceneID="B4f-V0-dDl">
             <objects>
-                <viewController title="Tutorial View Controller" id="bm2-eq-EXh" customClass="TutorialViewController" customModule="Tamagochi" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Tutorial View Controller" id="bm2-eq-EXh" customClass="TutorialViewController" customModule="Grunchy" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="S4N-x1-tFP">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -469,7 +470,7 @@
         <!--Settings View Controller-->
         <scene sceneID="pVv-GO-E9D">
             <objects>
-                <viewController title="Settings View Controller" id="7hF-fC-UCb" customClass="SettingsViewController" customModule="Tamagochi" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Settings View Controller" id="7hF-fC-UCb" customClass="SettingsViewController" customModule="Grunchy" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Lsh-iY-8Jg">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
