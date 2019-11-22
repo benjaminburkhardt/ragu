@@ -125,8 +125,8 @@ class HomeViewController: UILoggingViewController, UINavigationControllerDelegat
         settingsIcon.titleLabel?.font = UIFont(name: "SFProText-Light", size: 35)
         journeyIcon.titleLabel?.font = UIFont(name: "SFProText-Light", size: 35)
         
-        settingsIcon.setTitleColor(GlobalSettings.colors[4], for: .normal)
-        journeyIcon.setTitleColor(GlobalSettings.colors[4], for: .normal)
+        settingsIcon.setTitleColor(GlobalSettings.colors[6], for: .normal)
+        journeyIcon.setTitleColor(GlobalSettings.colors[6], for: .normal)
         
         thirstBar.backgroundColor = GlobalSettings.colors[1]
         hungerBar.backgroundColor = GlobalSettings.colors[3]

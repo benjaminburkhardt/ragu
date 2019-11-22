@@ -363,6 +363,7 @@
 		BE9C62EC237986190088E1AB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UCA66KLTCL;
 				INFOPLIST_FILE = Tamagochi/Info.plist;
@@ -380,6 +381,7 @@
 		BE9C62ED237986190088E1AB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UCA66KLTCL;
 				INFOPLIST_FILE = Tamagochi/Info.plist;
