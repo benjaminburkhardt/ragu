@@ -207,12 +207,13 @@ class ImageClassification : UIViewController {
                             }
                         }
                     }
+                    // nothing found :(
+                    if(found == ""){
+                        self.controllerToNotify.updateStatus(status: .unhealthy)
+                    }
                 }
                 
-                // nothing found :(
-                if(found == ""){
-                    self.controllerToNotify.updateStatus(status: .unhealthy)
-                }
+
                 
                 // For debugging fake output!
                 switch GlobalSettings.debugMode {

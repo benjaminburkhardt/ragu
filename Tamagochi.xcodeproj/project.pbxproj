@@ -43,7 +43,7 @@
 		7CD93984237D8E2E0020C35E /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		BE16BDCB2386CAF200465B4B /* LastestPhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastestPhotosViewController.swift; sourceTree = "<group>"; };
 		BE2E9803237DF66F00A06BD6 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
-		BE9C62D7237986170088E1AB /* Tamagochi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tamagochi.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BE9C62D7237986170088E1AB /* Grunchy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Grunchy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE9C62DA237986170088E1AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BE9C62DC237986170088E1AB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		BE9C62DE237986170088E1AB /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -94,7 +94,7 @@
 		BE9C62D8237986170088E1AB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				BE9C62D7237986170088E1AB /* Tamagochi.app */,
+				BE9C62D7237986170088E1AB /* Grunchy.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -146,7 +146,7 @@
 			);
 			name = Tamagochi;
 			productName = Tamagochi;
-			productReference = BE9C62D7237986170088E1AB /* Tamagochi.app */;
+			productReference = BE9C62D7237986170088E1AB /* Grunchy.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -363,16 +363,15 @@
 		BE9C62EC237986190088E1AB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = G57CC873HS;
+				DEVELOPMENT_TEAM = UCA66KLTCL;
 				INFOPLIST_FILE = Tamagochi/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = RAGU.TamagochiX;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = Tamagochi;
+				PRODUCT_NAME = Grunchy;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -381,16 +380,15 @@
 		BE9C62ED237986190088E1AB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = G57CC873HS;
+				DEVELOPMENT_TEAM = UCA66KLTCL;
 				INFOPLIST_FILE = Tamagochi/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = RAGU.TamagochiX;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = Tamagochi;
+				PRODUCT_NAME = Grunchy;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
