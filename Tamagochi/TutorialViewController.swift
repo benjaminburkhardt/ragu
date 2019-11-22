@@ -15,15 +15,18 @@ class TutorialViewController : UIViewController{
         self.view.backgroundColor = GlobalSettings.colors[0]
     }
     
-    @IBAction func exitTutorial(_ sender: UIButton) {
-        
-        // Closes the tutorial page
-        dismiss(animated: true, completion: nil)
-        
+    override func viewDidDisappear(_ animated: Bool) {
         // TO_DO: Ask for notifications
         
         //permission for notifications
         let manager = NotificationManager()
         manager.requestAuthorization()
+        
+    }
+    
+    @IBAction func exitTutorial(_ sender: UIButton) {
+        
+        // Closes the tutorial page
+        dismiss(animated: true, completion: nil)
     }
 }
