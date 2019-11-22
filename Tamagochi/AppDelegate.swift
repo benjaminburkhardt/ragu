@@ -22,10 +22,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //AppDelegate is the delegate of the shared UNUserNotificationCenter istance
         UNUserNotificationCenter.current().delegate = self
         
-        //Permission request
-        let manager = NotificationManager()
-        manager.requestAuthorization()
-        
         return true
     }
     

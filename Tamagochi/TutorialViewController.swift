@@ -21,5 +21,9 @@ class TutorialViewController : UIViewController{
         dismiss(animated: true, completion: nil)
         
         // TO_DO: Ask for notifications
+        
+        //permission for notifications
+        let manager = NotificationManager()
+        manager.requestAuthorization()
     }
 }
