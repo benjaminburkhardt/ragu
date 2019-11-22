@@ -80,6 +80,7 @@ public class PersistentDataManager{
         // 4 hours ago
         currentHealthStatus.setValue(Calendar.current.date(byAdding: .hour, value: -4, to: Date()), forKey: "lastPhotoFood")
         currentHealthStatus.setValue(Calendar.current.date(byAdding: .hour, value: -4, to: Date()), forKey: "lastPhotoWater")
+        currentHealthStatus.setValue(Date(), forKey: "dateChallengeStarted")
         
         do{
             try managedContext.save()
@@ -134,6 +135,16 @@ public class PersistentDataManager{
                 if (timeSinceLastFood > (24*60*60)){
                     healthValues["thirsty"] = 0
                 }
+                
+                var daysInChallenge = daysBetween(start: data.value(forKey: "dateChallengeStarted") as! Date, end: Date())
+                
+                //minutes
+                if(GlobalSettings.demoMode){
+                    daysInChallenge = minutesBetween(start: data.value(forKey: "dateChallengeStarted") as! Date, end: Date())
+                }
+                
+                healthValues["daysInChallenge"] = daysInChallenge
+
             }
         } catch let error as NSError {
             print("Error while reading CoreData! \(error.userInfo)")
@@ -219,4 +230,15 @@ public class PersistentDataManager{
         }
         return images
     }
+    
+    //MARK:- daysBetween
+    func daysBetween(start: Date, end: Date) -> Int {
+        return Calendar.current.dateComponents([.day], from: start, to: end).day!
+    }
+    
+    //MARK:- minutesBetween
+    func minutesBetween(start: Date, end: Date) -> Int {
+        return Calendar.current.dateComponents([.minute], from: start, to: end).minute!
+    }
+    
 }

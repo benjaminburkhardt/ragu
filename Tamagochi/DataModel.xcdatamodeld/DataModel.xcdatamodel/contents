@@ -6,11 +6,12 @@
         <attribute name="type" optional="YES" attributeType="String"/>
     </entity>
     <entity name="HealthStatus" representedClassName="HealthStatus" syncable="YES" codeGenerationType="class">
+        <attribute name="dateChallengeStarted" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="lastPhotoFood" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="lastPhotoWater" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
     </entity>
     <elements>
         <element name="FoodImage" positionX="-63" positionY="9" width="128" height="88"/>
-        <element name="HealthStatus" positionX="-63" positionY="-18" width="128" height="73"/>
+        <element name="HealthStatus" positionX="-63" positionY="-18" width="128" height="88"/>
     </elements>
 </model>

@@ -167,6 +167,10 @@ class HomeViewController: UILoggingViewController, UINavigationControllerDelegat
             self.hungerBar.frame = CGRect(x: self.hungerBar.frame.minX, y: self.hungerBar.frame.minY, width: barWidth, height: self.hungerBar.frame.height)
         })
         
+        // update challenge counter
+        daysRemaining.text = String(healthStatus["daysInChallenge"]!)
+
+        
     }
     
     override func didReceiveMemoryWarning() {
