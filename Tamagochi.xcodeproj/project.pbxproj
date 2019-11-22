@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1283E519237D8A9800C53692 /* DisplayAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1283E518237D8A9800C53692 /* DisplayAnimation.swift */; };
 		1283E51B237D8AB900C53692 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 1283E51A237D8AB900C53692 /* art.scnassets */; };
 		7CA48CDD2382B8710061C1C8 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA48CDC2382B8710061C1C8 /* SettingsViewController.swift */; };
 		7CB22BE4237EA263009DDB7A /* SF-Pro-Text-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7CB22BD8237EA263009DDB7A /* SF-Pro-Text-Light.otf */; };
@@ -34,7 +33,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1283E518237D8A9800C53692 /* DisplayAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayAnimation.swift; sourceTree = "<group>"; };
 		1283E51A237D8AB900C53692 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
 		7CA48CDC2382B8710061C1C8 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		7CB22BD8237EA263009DDB7A /* SF-Pro-Text-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Light.otf"; sourceTree = "<group>"; };
@@ -121,7 +119,6 @@
 				7CD93984237D8E2E0020C35E /* UIViewExtension.swift */,
 				BE9C62EE2379C3570088E1AB /* FeedbackViewController.swift */,
 				BEB067C02383F86600A3FAC6 /* ProgressView.swift */,
-				1283E518237D8A9800C53692 /* DisplayAnimation.swift */,
 				BEB067C4238576A000A3FAC6 /* PersistentDataManager.swift */,
 				BEB067C82385A17400A3FAC6 /* StoredImage.swift */,
 				CAE7EC9C238726AA00F2A81A /* NotificationManager.swift */,
@@ -210,7 +207,6 @@
 				BEB067C92385A17400A3FAC6 /* StoredImage.swift in Sources */,
 				BEB067C5238576A000A3FAC6 /* PersistentDataManager.swift in Sources */,
 				BEC8EE45237AE3E000C58B14 /* MobileNetV2.mlmodel in Sources */,
-				1283E519237D8A9800C53692 /* DisplayAnimation.swift in Sources */,
 				BEC8EE47237AE42900C58B14 /* GlobalSettings.swift in Sources */,
 				BE9C62DF237986170088E1AB /* HomeViewController.swift in Sources */,
 				BE9C62DB237986170088E1AB /* AppDelegate.swift in Sources */,
@@ -365,8 +361,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = UCA66KLTCL;
+				DEVELOPMENT_TEAM = QN5JJ5XQZ6;
 				INFOPLIST_FILE = Tamagochi/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -383,8 +380,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = UCA66KLTCL;
+				DEVELOPMENT_TEAM = QN5JJ5XQZ6;
 				INFOPLIST_FILE = Tamagochi/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
