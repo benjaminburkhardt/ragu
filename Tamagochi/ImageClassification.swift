@@ -194,6 +194,7 @@ class ImageClassification : UIViewController {
                                 found = healthyFood
                                 print("Found \(found)")
                                 self.controllerToNotify.updateStatus(status: .healthy)
+                                self.controllerToNotify.updateRecognizedObject(recognizedObject: found)
                                 break
                             }
                         }
@@ -203,6 +204,7 @@ class ImageClassification : UIViewController {
                                 found = healthyWater
                                 print("Found \(found)")
                                 self.controllerToNotify.updateStatus(status: .water)
+                                self.controllerToNotify.updateRecognizedObject(recognizedObject: found)
                                 break
                             }
                         }

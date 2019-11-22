@@ -134,8 +134,20 @@ class HomeViewController: UILoggingViewController, UINavigationControllerDelegat
         feedbackViewController.coreDataAccess = persistentDataManager
         feedbackViewController.homeViewController = self
         self.present(feedbackViewController, animated: true, completion: nil)
+    }
+    
+    @IBAction func goToHistoryViewController(_ sender: UIButton) {
+        goToHistoryViewController()
+    }
+    func goToHistoryViewController(){
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let historyViewController = storyBoard.instantiateViewController(withIdentifier: "historyViewController") as! LatestPhotosViewController
+        historyViewController.persistentDataManager = persistentDataManager
+        self.present(historyViewController, animated: true, completion: nil)
+        
         
     }
+
     
     /// MARK - Prepare stuff for the next ViewController
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

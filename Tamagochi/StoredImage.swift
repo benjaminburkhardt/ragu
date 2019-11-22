@@ -13,11 +13,13 @@ class StoredImage {
     var type: ImageType!
     var name: String!
     var date: Date!
+    var descr: String!
     
     
-    init(name: String, date: Date, type: String) {
+    init(name: String, date: Date, type: String, descr: String) {
         self.name = name
         self.date = date
+        self.descr = descr
         
         switch type{
         case ImageType.food.rawValue:
@@ -29,6 +31,22 @@ class StoredImage {
         default:
             break
         }
+    }
+    
+    func getName() -> String{
+        return self.name
+    }
+    
+    func getDescr() -> String{
+        return self.descr
+    }
+    
+    func getType() -> ImageType{
+        return self.type
+    }
+    
+    func getDate() -> Date{
+        return self.date
     }
     
 }

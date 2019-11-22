@@ -103,7 +103,7 @@ class FeedbackViewController : UILoggingViewController {
         }
         
         do{
-        try coreDataAccess!.saveImage(image: inputImage!, status: type)
+            try coreDataAccess!.saveImage(image: inputImage!, status: type, descr: recognizedObject)
         }catch{
             print(error)
         }
@@ -119,7 +119,7 @@ class FeedbackViewController : UILoggingViewController {
         
         
         // print just for testing
-        print(coreDataAccess!.retrieveImages(type: ImageType.food))
+        print(coreDataAccess!.retrieveImages())
         
         UIView.animate(withDuration: 0.2, delay: 0.3, options: [], animations: {
             
