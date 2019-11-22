@@ -50,7 +50,7 @@ class NotificationManager: NSObject, UNUserNotificationCenterDelegate{
             content.body = notification.body
             content.sound    = .default
 
-            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: TimeInterval(notification.seconds), repeats: false)
+            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: notification.timeInterval, repeats: false)
             
             let request: UNNotificationRequest
             
@@ -102,7 +102,7 @@ struct Notification{
     let id: NotificationType
     let title: String
     let body: String
-    let seconds: UInt
+    let timeInterval: TimeInterval
 }
 
 enum NotificationType{
