@@ -141,6 +141,7 @@ class HomeViewController: UILoggingViewController, UINavigationControllerDelegat
         })
         Timer.scheduledTimer(withTimeInterval: 5.1, repeats: false) { (timer) in
             self.daysRemaningAnimation.transform = CGAffineTransform(rotationAngle: 0)
+            self.updateBars()
             self.runContinuously()
         }
     }
