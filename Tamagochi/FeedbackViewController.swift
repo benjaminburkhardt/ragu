@@ -156,8 +156,23 @@ class FeedbackViewController : UILoggingViewController {
                             
                             UIView.animate(withDuration: 0.2, delay: 0.3, options: [], animations: {
 
-                                self.dismiss(animated: true, completion: {self.homeViewController?.updateBars()})
-                                
+                                self.dismiss(animated: true, completion: {
+                                    self.homeViewController?.updateBars()
+                                   if(type == ImageType.water){
+                                        self.homeViewController?.updateAnimation(humor: .drinking)
+                                        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0, execute: {
+                                                self.homeViewController?.updateAnimation(humor: .dancing)
+                                                DispatchQueue.main.asyncAfter(deadline: .now() + 3.0, execute: {
+                                                    self.homeViewController?.updateAnimation(humor: .still)
+                                                })
+                                        })
+                                   } else {
+                                        self.homeViewController?.updateAnimation(humor: .dancing)
+                                        DispatchQueue.main.asyncAfter(deadline: .now() + 5.0, execute: {
+                                            self.homeViewController?.updateAnimation(humor: .still)
+                                        })
+                                    }
+                                })
                             }, completion: nil)
                         })
                     })
@@ -181,7 +196,10 @@ class FeedbackViewController : UILoggingViewController {
                 self.titleLabel.text = "So bad!"
                 self.titleLabel.textColor = UIColor.red
                 self.statusLabel.text = "You should try eating something different"
-                
+                self.homeViewController?.updateAnimation(humor: .angry)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 5.0, execute: {
+                    self.homeViewController?.updateAnimation(humor: .waiting)
+                })
             }, completion: nil)
         })
     }
@@ -191,6 +209,7 @@ class FeedbackViewController : UILoggingViewController {
         self.titleLabel.text = "Try again!"
         self.statusLabel.text = "Image not recognized or not so clear"
         self.sadFace.alpha = 1
+        self.homeViewController?.updateAnimation(humor: .waiting)
     }
     
     @IBOutlet weak var statusLabel: UILabel!
