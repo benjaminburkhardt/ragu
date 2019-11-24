@@ -25,7 +25,7 @@ class HomeViewController: UILoggingViewController, UINavigationControllerDelegat
     @IBOutlet weak var settingsIcon: UIButton!
     @IBOutlet weak var feedMeButton: UIButton!
     @IBOutlet weak var daysRemaningAnimation: UIImageView!
-    @IBOutlet weak var daysRemaining: UILabel!
+    @IBOutlet weak var daysInChallenge: UILabel!
     @IBOutlet weak var tamagotchiView: SCNView!
     
     // CoreData
@@ -40,7 +40,6 @@ class HomeViewController: UILoggingViewController, UINavigationControllerDelegat
             case still, eating, drinking, waiting, dancing, angry
         }
     //    value to switch to change the animation
-        var animation = humor.still
 
     
     override func viewDidLoad() {
@@ -55,22 +54,8 @@ class HomeViewController: UILoggingViewController, UINavigationControllerDelegat
         guard container != nil else {
             fatalError("This view needs a persistent container.")
         }
-        // switch animation for challenge times
-        switch animation {
-            case humor.still:
-                animateWith(animation: "art.scnassets/goast/idleFixed.dae")
-            case humor.eating:
-                animateWith(animation: "art.scnassets/goast/eatingFixed.dae")
-            case humor.drinking:
-                animateWith(animation: "art.scnassets/goast/drinkingFixed.dae")
-            case humor.waiting:
-                animateWith(animation: "art.scnassets/goast/angryFixed.dae")
-            case humor.dancing:
-                animateWith(animation: "art.scnassets/goast/dancingFixed.dae")
-            case humor.angry:
-                animateWith(animation: "art.scnassets/goast/kickFixed.dae")
-        }
         // start animation for challenge times
+        updateAnimation()
         runContinuously()
     }
     
@@ -101,7 +86,8 @@ class HomeViewController: UILoggingViewController, UINavigationControllerDelegat
         
         // Updating hunger and thirst bars
         updateBars()
-
+        tamagotchiView.layer.cornerRadius = tamagotchiView.frame.size.width/2.0
+        tamagotchiView.shadowOffset = CGSize(width: 5, height: 5)
     }
     
     
@@ -134,8 +120,20 @@ class HomeViewController: UILoggingViewController, UINavigationControllerDelegat
         feedbackViewController.coreDataAccess = persistentDataManager
         feedbackViewController.homeViewController = self
         self.present(feedbackViewController, animated: true, completion: nil)
+    }
+    
+    @IBAction func goToHistoryViewController(_ sender: UIButton) {
+        goToHistoryViewController()
+    }
+    func goToHistoryViewController(){
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let historyViewController = storyBoard.instantiateViewController(withIdentifier: "historyViewController") as! LatestPhotosViewController
+        historyViewController.persistentDataManager = persistentDataManager
+        self.present(historyViewController, animated: true, completion: nil)
+        
         
     }
+
     
     /// MARK - Prepare stuff for the next ViewController
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -155,8 +153,8 @@ class HomeViewController: UILoggingViewController, UINavigationControllerDelegat
         settingsIcon.setTitleColor(GlobalSettings.colors[6], for: .normal)
         journeyIcon.setTitleColor(GlobalSettings.colors[6], for: .normal)
         
-        thirstBar.backgroundColor = GlobalSettings.colors[1]
-        hungerBar.backgroundColor = GlobalSettings.colors[3]
+        thirstBar.backgroundColor = #colorLiteral(red: 0, green: 0.3858361244, blue: 1, alpha: 1)
+        hungerBar.backgroundColor = #colorLiteral(red: 0, green: 0.7103458047, blue: 0, alpha: 1)// GlobalSettings.colors[3]
         
         view.backgroundColor = GlobalSettings.colors[0]
         feedMeButton.backgroundColor = GlobalSettings.colors[4]
@@ -196,9 +194,7 @@ class HomeViewController: UILoggingViewController, UINavigationControllerDelegat
         })
         
         // update challenge counter
-        daysRemaining.text = String(healthStatus["daysInChallenge"]!)
-
-        
+        daysInChallenge.text = String(healthStatus["daysInChallenge"]!)
     }
     
     override func didReceiveMemoryWarning() {
@@ -214,7 +210,7 @@ class HomeViewController: UILoggingViewController, UINavigationControllerDelegat
         let idleScene = SCNScene(named: animation)!
         // Contains the hole animation
         let node = SCNNode()
-        // Add all animation nodes to a parent node
+        // Add all animation nodes to a parent xnode
         for child in idleScene.rootNode.childNodes {
             node.addChildNode(child)
         }
@@ -225,5 +221,25 @@ class HomeViewController: UILoggingViewController, UINavigationControllerDelegat
         tamagotchiView.backgroundColor = .orange
         tamagotchiView.scene?.rootNode.addChildNode(node)
         // Load all the DAE animations
+    }
+    
+    func updateAnimation(humor: humor? = nil){
+        // switch animation for challenge times
+        switch humor {
+            case .still:
+                animateWith(animation: "art.scnassets/goast/idleFixed.dae")
+            case .eating:
+                animateWith(animation: "art.scnassets/goast/eatingFixed.dae")
+            case .drinking:
+                animateWith(animation: "art.scnassets/goast/drinkingFixed.dae")
+            case .waiting:
+                animateWith(animation: "art.scnassets/goast/angryFixed.dae")
+            case .dancing:
+                animateWith(animation: "art.scnassets/goast/dancingFixed.dae")
+            case .angry:
+                animateWith(animation: "art.scnassets/goast/kickFixed.dae")
+            default:
+                animateWith(animation: "art.scnassets/goast/idleFixed.dae")
+        }
     }
 }

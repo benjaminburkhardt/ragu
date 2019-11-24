@@ -26,7 +26,10 @@ public class PersistentDataManager{
     
     
     // MARK: - File Access
-    func saveImage(image: UIImage, status: ImageType) throws -> String{
+    func saveImage(image: UIImage, status: ImageType, descr: String) throws -> String{
+        
+        var resized = image.resizeWithWidth(width: 200)
+        
         
         if (status != ImageType.food && status != ImageType.water){
             print("Cannot save unhealthy image! \(status)")
@@ -38,13 +41,13 @@ public class PersistentDataManager{
         
         if let filePath = filePath(forKey: name) {
             do  {
-                try image.pngData()!.write(to: filePath, options: .atomic)
+                try resized!.pngData()!.write(to: filePath, options: .atomic)
             } catch let err {
                 print("Saving file resulted in error: ", err)
             }
         }
         
-        saveImage(name: name, status: status)
+        saveImageToCoreData(name: name, status: status, descr: descr)
         
         return name
     }
@@ -144,7 +147,7 @@ public class PersistentDataManager{
                 }
                 
                 healthValues["daysInChallenge"] = daysInChallenge
-
+                
             }
         } catch let error as NSError {
             print("Error while reading CoreData! \(error.userInfo)")
@@ -187,11 +190,12 @@ public class PersistentDataManager{
     }
     
     
-    func saveImage(name: String, status: ImageType){
+    func saveImageToCoreData(name: String, status: ImageType, descr: String){
         let imageTaken = NSEntityDescription.entity(forEntityName: "FoodImage", in: managedContext)!
         
         let imageObject = NSManagedObject(entity: imageTaken, insertInto: managedContext)
         imageObject.setValue(name, forKey: "name")
+        imageObject.setValue(descr, forKey: "descr")
         imageObject.setValue(Date(), forKey: "date")
         switch status{
         case .food:
@@ -214,7 +218,7 @@ public class PersistentDataManager{
         print("Stored image and saved path in CoreData")
     }
     
-    func retrieveImages(type: ImageType) -> [StoredImage] {
+    func retrieveImages() -> [StoredImage] {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "FoodImage")
         
         var images = [StoredImage]()
@@ -223,7 +227,13 @@ public class PersistentDataManager{
             let result = try managedContext.fetch(fetchRequest)
             for data in result as! [NSManagedObject] {
                 
-                images.append(StoredImage(name: data.value(forKey: "name") as! String, date: data.value(forKey: "date") as! Date, type: data.value(forKey: "type") as! String))
+                images.append(
+                    StoredImage(
+                        name: data.value(forKey: "name") as! String,
+                        date: data.value(forKey: "date") as! Date,
+                        type: data.value(forKey: "type") as! String,
+                        descr: data.value(forKey: "descr") as! String)
+                )
             }
         } catch let error as NSError {
             print("Error while reading CoreData! \(error.userInfo)")

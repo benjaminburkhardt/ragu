@@ -42,6 +42,8 @@ class FeedbackViewController : UILoggingViewController {
         bite4.alpha = 0
         
         imageClassification = ImageClassification(controllerToNotify: self)
+        
+        self.titleLabel.font = UIFont.boldSystemFont(ofSize: 35.0)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -90,7 +92,7 @@ class FeedbackViewController : UILoggingViewController {
     
     func healthyImageRecognized(){
         
-        feedbackLabel.text = "Wow, \(recognizedObject)... It sounds great!"
+        //feedbackLabel.text = "Wow, \(recognizedObject) sounds great!"
         
         var type : ImageType!
         switch status {
@@ -103,7 +105,7 @@ class FeedbackViewController : UILoggingViewController {
         }
         
         do{
-        try coreDataAccess!.saveImage(image: inputImage!, status: type)
+            try coreDataAccess!.saveImage(image: inputImage!, status: type, descr: recognizedObject)
         }catch{
             print(error)
         }
@@ -128,7 +130,7 @@ class FeedbackViewController : UILoggingViewController {
         
         
         // print just for testing
-        print(coreDataAccess!.retrieveImages(type: ImageType.food))
+        print(coreDataAccess!.retrieveImages())
         
         UIView.animate(withDuration: 0.2, delay: 0.3, options: [], animations: {
             
@@ -140,8 +142,8 @@ class FeedbackViewController : UILoggingViewController {
                 
                 self.bite2.alpha = 1
                 self.titleLabel.text = "Yummy!"
-                self.statusLabel.text = "I really like this"
-                self.titleLabel.textColor = UIColor.green
+                //self.statusLabel.text = "I really like this"
+                self.titleLabel.textColor = UIColor.black
                 
             }, completion: { (position) in
                 
@@ -165,8 +167,23 @@ class FeedbackViewController : UILoggingViewController {
                             
                             UIView.animate(withDuration: 0.2, delay: 0.3, options: [], animations: {
 
-                                self.dismiss(animated: true, completion: {self.homeViewController?.updateBars()})
-                                
+                                self.dismiss(animated: true, completion: {
+                                    self.homeViewController?.updateBars()
+                                   if(type == ImageType.water){
+                                        self.homeViewController?.updateAnimation(humor: .drinking)
+                                        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0, execute: {
+                                                self.homeViewController?.updateAnimation(humor: .dancing)
+                                                DispatchQueue.main.asyncAfter(deadline: .now() + 3.0, execute: {
+                                                    self.homeViewController?.updateAnimation(humor: .still)
+                                                })
+                                        })
+                                   } else {
+                                        self.homeViewController?.updateAnimation(humor: .dancing)
+                                        DispatchQueue.main.asyncAfter(deadline: .now() + 5.0, execute: {
+                                            self.homeViewController?.updateAnimation(humor: .still)
+                                        })
+                                    }
+                                })
                             }, completion: nil)
                         })
                     })
@@ -176,7 +193,7 @@ class FeedbackViewController : UILoggingViewController {
     }
     
     func unhealthyImageRecognized(){
-        feedbackLabel.text = "You tried to feed me with \(recognizedObject)... Try something different!"
+        //feedbackLabel.text = "You tried to feed me with \(recognizedObject)... Try something different!"
         
         UIView.animate(withDuration: 0.2, delay: 0.3, options: [], animations: {
             
@@ -188,18 +205,22 @@ class FeedbackViewController : UILoggingViewController {
             UIView.animate(withDuration: 0.2, delay: 0.3, options: [], animations: {
                 
                 self.titleLabel.text = "So bad!"
-                self.titleLabel.textColor = UIColor.red
+                self.titleLabel.textColor = UIColor.black
                 self.statusLabel.text = "You should try eating something different"
-                
+                self.homeViewController?.updateAnimation(humor: .angry)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 5.0, execute: {
+                    self.homeViewController?.updateAnimation(humor: .waiting)
+                })
             }, completion: nil)
         })
     }
     
     func imageNotRecognized(){
-        feedbackLabel.text = "I just recognize \(recognizedObject)... But I'm not sure if it's right"
+        //feedbackLabel.text = "I just recognize \(recognizedObject)... But I'm not sure if it's right"
         self.titleLabel.text = "Try again!"
-        self.statusLabel.text = "Image not recognized or not so clear"
+        //self.statusLabel.text = "Image not recognized or not so clear"
         self.sadFace.alpha = 1
+        self.homeViewController?.updateAnimation(humor: .waiting)
     }
     
     @IBOutlet weak var statusLabel: UILabel!
