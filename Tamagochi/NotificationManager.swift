@@ -58,9 +58,9 @@ class NotificationManager: NSObject, UNUserNotificationCenterDelegate{
         let trigger: UNTimeIntervalNotificationTrigger
         
         if GlobalSettings.demoMode {
-            trigger = UNTimeIntervalNotificationTrigger(timeInterval: TimeInterval(timeIntervalDemoMode), repeats: false)
+            trigger = UNTimeIntervalNotificationTrigger(timeInterval: TimeInterval(timeIntervalDemoMode), repeats: true)
         }else{
-           trigger = UNTimeIntervalNotificationTrigger(timeInterval: notification.timeInterval, repeats: false)
+           trigger = UNTimeIntervalNotificationTrigger(timeInterval: notification.timeInterval, repeats: true)
         }
             
             
