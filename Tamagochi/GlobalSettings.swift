@@ -13,7 +13,7 @@ public class GlobalSettings {
     
     static let colors = [UIColor(rgb: 0x20E1D1), UIColor(rgb: 0x96C0FF), UIColor(rgb: 0x7DB1FF), UIColor(rgb: 0xC1A772), UIColor.white, UIColor(rgb: 0xFFAD08), UIColor.black]
     static let debugMode: DebugMode = .disabled
-    static let demoMode = false
+    static let demoMode = true
     
 }
 

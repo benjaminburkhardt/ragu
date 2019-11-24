@@ -100,9 +100,13 @@ public class PersistentDataManager{
         
         do{
             let result = try managedContext.fetch(fetchRequest)
-            let multiplier: Double = (100 / (12*60*60))
+            var multiplier: Double = (100 / (12*60*60))
             for data in result as! [NSManagedObject] {
                 
+                
+                if(GlobalSettings.demoMode){
+                    multiplier = (100 / (60*5))
+                }
                 
                 // FOOD
                 print("lastPhotoFood ", data.value(forKey: "lastPhotoFood") as! Date)
@@ -111,6 +115,10 @@ public class PersistentDataManager{
                 let timeSinceLastFood : TimeInterval = dateLastPhoto.distance(to: Date())
                 print("timeSinceLastFood", timeSinceLastFood)
                 healthValues["hungry"] = 100 - Int(Double(timeSinceLastFood) * multiplier)
+                
+                if(healthValues["hungry"] != nil && healthValues["hungry"]! <= 0){
+                    healthValues["hungry"] = 1
+                }
                 
                 print("hungry level \(String(describing: healthValues["hungry"]))")
                 
@@ -130,6 +138,10 @@ public class PersistentDataManager{
                 healthValues["thirsty"] = 100 - Int(Double(timeSinceLastWater) * multiplier)
                 
                 print("water level \(String(describing: healthValues["thirsty"]))")
+                
+                if(healthValues["thirsty"] != nil && healthValues["thirsty"]! <= 0){
+                    healthValues["thirsty"] = 1
+                }
                 
                 // dies after 24h without food
                 if (timeSinceLastWater > (12*60*60)) && (timeSinceLastWater < (24*60*60)) {

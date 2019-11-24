@@ -27,6 +27,7 @@ class HomeViewController: UILoggingViewController, UINavigationControllerDelegat
     @IBOutlet weak var daysRemaningAnimation: UIImageView!
     @IBOutlet weak var daysInChallenge: UILabel!
     @IBOutlet weak var tamagotchiView: SCNView!
+    @IBOutlet weak var demoModeLabel: UILabel!
     
     // CoreData
     var container: NSPersistentContainer!
@@ -50,6 +51,9 @@ class HomeViewController: UILoggingViewController, UINavigationControllerDelegat
         // Initializations of colors and fonts
         initializeOutlets()
         
+        
+
+        
         // CoreData setup
         container = NSPersistentContainer(name: "DataModel")
         
@@ -63,6 +67,12 @@ class HomeViewController: UILoggingViewController, UINavigationControllerDelegat
     
     override func viewWillAppear(_ animated: Bool) {
         // update data
+        demoModeLabel.numberOfLines = 2
+        if(GlobalSettings.demoMode){
+            demoModeLabel.isHidden = false
+        }else{
+            demoModeLabel.isHidden = true
+        }
     }
     
     func presentationControllerDidDismiss(_ presentationController: UIPresentationController){
