@@ -100,8 +100,8 @@ class ImageClassification : UIViewController {
                 print("Highest confidence: " , confidence)
                 
                 self.result = recognized
-                //self.controllerToNotify.updateStatus(status: ImageStatus.classified)
-                //self.controllerToNotify.updateRecognizedObject(recognizedObject: recognized[0])
+                self.controllerToNotify.updateStatus(status: ImageStatus.classified)
+                self.controllerToNotify.updateRecognizedObject(recognizedObject: "Healthy stuff")
                 
                 
                 let veggies = [
@@ -196,8 +196,8 @@ class ImageClassification : UIViewController {
                             if(item.contains(healthyFood)){
                                 found = healthyFood
                                 print("Eating \(found)")
-                                self.controllerToNotify.updateStatus(status: .healthy)
                                 self.controllerToNotify.updateRecognizedObject(recognizedObject: found)
+                                self.controllerToNotify.updateStatus(status: .healthy)
                                 return
                             }
                         }
@@ -206,8 +206,8 @@ class ImageClassification : UIViewController {
                             if(item.contains(healthyWater)){
                                 found = healthyWater
                                 print("Drinking \(found)")
-                                self.controllerToNotify.updateStatus(status: .water)
                                 self.controllerToNotify.updateRecognizedObject(recognizedObject: found)
+                                self.controllerToNotify.updateStatus(status: .water)
                                 return
                             }
                         }

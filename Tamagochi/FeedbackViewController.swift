@@ -92,7 +92,7 @@ class FeedbackViewController : UILoggingViewController {
     
     func healthyImageRecognized(){
         
-        feedbackLabel.text = "Wow, \(recognizedObject)... It sounds great!"
+        //feedbackLabel.text = "Wow, \(recognizedObject) sounds great!"
         
         var type : ImageType!
         switch status {
@@ -133,7 +133,7 @@ class FeedbackViewController : UILoggingViewController {
                 
                 self.bite2.alpha = 1
                 self.titleLabel.text = "Yummy!"
-                self.statusLabel.text = "I really like this"
+                //self.statusLabel.text = "I really like this"
                 self.titleLabel.textColor = UIColor.black
                 
             }, completion: { (position) in
@@ -184,7 +184,7 @@ class FeedbackViewController : UILoggingViewController {
     }
     
     func unhealthyImageRecognized(){
-        feedbackLabel.text = "You tried to feed me with \(recognizedObject)... Try something different!"
+        //feedbackLabel.text = "You tried to feed me with \(recognizedObject)... Try something different!"
         
         UIView.animate(withDuration: 0.2, delay: 0.3, options: [], animations: {
             
@@ -207,9 +207,9 @@ class FeedbackViewController : UILoggingViewController {
     }
     
     func imageNotRecognized(){
-        feedbackLabel.text = "I just recognize \(recognizedObject)... But I'm not sure if it's right"
+        //feedbackLabel.text = "I just recognize \(recognizedObject)... But I'm not sure if it's right"
         self.titleLabel.text = "Try again!"
-        self.statusLabel.text = "Image not recognized or not so clear"
+        //self.statusLabel.text = "Image not recognized or not so clear"
         self.sadFace.alpha = 1
         self.homeViewController?.updateAnimation(humor: .waiting)
     }
