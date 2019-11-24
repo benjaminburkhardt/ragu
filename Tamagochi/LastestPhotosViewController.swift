@@ -25,7 +25,7 @@ class LatestPhotosViewController: UITableViewController {
         
         if(persistentDataManager != nil){
             print("Loading stored images")
-            images = persistentDataManager!.retrieveImages()
+            images = persistentDataManager!.retrieveImages().reversed()
         }
         
     }
@@ -52,12 +52,48 @@ class LatestPhotosViewController: UITableViewController {
         if let dequeueCell = tableView.dequeueReusableCell(withIdentifier: "cell") {
             cell = dequeueCell
         } else {
-            cell = UITableViewCell(style: .default, reuseIdentifier: "cell")
+            cell = UITableViewCell(style: .subtitle, reuseIdentifier: "cell")
         }
         
-        cell.textLabel?.text = images![indexPath.row].getDescr()
+        
+        cell.backgroundColor = #colorLiteral(red: 0.1254901961, green: 0.8823529412, blue: 0.8196078431, alpha: 1)
+        
+        var elapsedDays: String = "0"
+        if(persistentDataManager != nil){
+         elapsedDays = String(persistentDataManager!.daysBetween(start: images![indexPath.row].getDate(), end: Date()))
+        }
+        
+        var daysAgo = "days ago"
+        if(elapsedDays == "1"){
+            daysAgo = "day ago"
+        }
+
+        cell.textLabel?.text = "\(images![indexPath.row].getDescr().capitalizingFirstLetter())"
+        cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 20)
+        cell.detailTextLabel?.text = "\(elapsedDays) \(daysAgo)"
+        cell.detailTextLabel?.font = UIFont.systemFont(ofSize: 15)
         cell.imageView?.image = persistentDataManager?.retrieveImage(forKey: images![indexPath.row].getName())
         return cell
         
+    }
+    
+    
+    // Header
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: tableView.frame.width, height: 80))
+
+        let label = UILabel()
+        label.frame = CGRect.init(x: 5, y: 5, width: headerView.frame.width-10, height: headerView.frame.height-10)
+        label.text = "  History"
+        label.font = UIFont.boldSystemFont(ofSize: 35.0)
+        label.textAlignment = .justified
+
+        headerView.addSubview(label)
+
+        return headerView
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 80
     }
 }

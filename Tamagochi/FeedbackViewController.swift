@@ -42,6 +42,8 @@ class FeedbackViewController : UILoggingViewController {
         bite4.alpha = 0
         
         imageClassification = ImageClassification(controllerToNotify: self)
+        
+        self.titleLabel.font = UIFont.boldSystemFont(ofSize: 35.0)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -132,7 +134,7 @@ class FeedbackViewController : UILoggingViewController {
                 self.bite2.alpha = 1
                 self.titleLabel.text = "Yummy!"
                 self.statusLabel.text = "I really like this"
-                self.titleLabel.textColor = UIColor.green
+                self.titleLabel.textColor = UIColor.black
                 
             }, completion: { (position) in
                 
@@ -194,7 +196,7 @@ class FeedbackViewController : UILoggingViewController {
             UIView.animate(withDuration: 0.2, delay: 0.3, options: [], animations: {
                 
                 self.titleLabel.text = "So bad!"
-                self.titleLabel.textColor = UIColor.red
+                self.titleLabel.textColor = UIColor.black
                 self.statusLabel.text = "You should try eating something different"
                 self.homeViewController?.updateAnimation(humor: .angry)
                 DispatchQueue.main.asyncAfter(deadline: .now() + 5.0, execute: {

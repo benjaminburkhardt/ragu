@@ -178,11 +178,16 @@ class ImageClassification : UIViewController {
                 
                 let water = [
                     "bottle",
-                    "water"]
+                    "water",
+                    "glass",
+                    "juice",
+                    "wine",
+                    "secco",
+                    "drink"]
                 
                 var found: String = ""
                 
-                if(confidence < 0.1){
+                if(confidence < 0.05){
                     print("Confidence too low!!")
                     self.controllerToNotify.updateStatus(status: .lowConfidence)
                     
@@ -192,20 +197,20 @@ class ImageClassification : UIViewController {
                         for healthyFood in (veggies+fruits){
                             if(item.contains(healthyFood)){
                                 found = healthyFood
-                                print("Found \(found)")
+                                print("Eating \(found)")
                                 self.controllerToNotify.updateStatus(status: .healthy)
                                 self.controllerToNotify.updateRecognizedObject(recognizedObject: found)
-                                break
+                                return
                             }
                         }
                         
                         for healthyWater in (water){
                             if(item.contains(healthyWater)){
                                 found = healthyWater
-                                print("Found \(found)")
+                                print("Drinking \(found)")
                                 self.controllerToNotify.updateStatus(status: .water)
                                 self.controllerToNotify.updateRecognizedObject(recognizedObject: found)
-                                break
+                                return
                             }
                         }
                     }

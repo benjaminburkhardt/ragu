@@ -28,6 +28,9 @@ public class PersistentDataManager{
     // MARK: - File Access
     func saveImage(image: UIImage, status: ImageType, descr: String) throws -> String{
         
+        var resized = image.resizeWithWidth(width: 200)
+        
+        
         if (status != ImageType.food && status != ImageType.water){
             print("Cannot save unhealthy image! \(status)")
             throw TamagotchiError.cannotSaveUnhealthyImage
@@ -38,7 +41,7 @@ public class PersistentDataManager{
         
         if let filePath = filePath(forKey: name) {
             do  {
-                try image.pngData()!.write(to: filePath, options: .atomic)
+                try resized!.pngData()!.write(to: filePath, options: .atomic)
             } catch let err {
                 print("Saving file resulted in error: ", err)
             }

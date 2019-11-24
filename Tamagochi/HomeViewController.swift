@@ -25,7 +25,7 @@ class HomeViewController: UILoggingViewController, UINavigationControllerDelegat
     @IBOutlet weak var settingsIcon: UIButton!
     @IBOutlet weak var feedMeButton: UIButton!
     @IBOutlet weak var daysRemaningAnimation: UIImageView!
-    @IBOutlet weak var daysRemaining: UILabel!
+    @IBOutlet weak var daysInChallenge: UILabel!
     @IBOutlet weak var tamagotchiView: SCNView!
     
     // CoreData
@@ -153,8 +153,8 @@ class HomeViewController: UILoggingViewController, UINavigationControllerDelegat
         settingsIcon.setTitleColor(GlobalSettings.colors[6], for: .normal)
         journeyIcon.setTitleColor(GlobalSettings.colors[6], for: .normal)
         
-        thirstBar.backgroundColor = GlobalSettings.colors[1]
-        hungerBar.backgroundColor = GlobalSettings.colors[3]
+        thirstBar.backgroundColor = #colorLiteral(red: 0, green: 0.3858361244, blue: 1, alpha: 1)
+        hungerBar.backgroundColor = #colorLiteral(red: 0, green: 0.7103458047, blue: 0, alpha: 1)// GlobalSettings.colors[3]
         
         view.backgroundColor = GlobalSettings.colors[0]
         feedMeButton.backgroundColor = GlobalSettings.colors[4]
@@ -194,9 +194,7 @@ class HomeViewController: UILoggingViewController, UINavigationControllerDelegat
         })
         
         // update challenge counter
-        daysRemaining.text = String(healthStatus["daysInChallenge"]!)
-
-        
+        daysInChallenge.text = String(healthStatus["daysInChallenge"]!)
     }
     
     override func didReceiveMemoryWarning() {
