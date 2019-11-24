@@ -17,8 +17,8 @@ class NotificationManager: NSObject, UNUserNotificationCenterDelegate{
     let foodInterval = 14400  // 4 hours
     let waterInterval = 7200 // 2 hours
     
-    let hourStartScheduleNotification = 8 //am
-    let hourFinishScheduleNotification = 20 //pm
+    private let timeIntervalDemoMode = 300 // 5 minutes
+    
     /**
      Ask permission to send local notifications
      */
@@ -49,30 +49,36 @@ class NotificationManager: NSObject, UNUserNotificationCenterDelegate{
     }
     
     // Schedule
-    private func scheduleNotification(_ notification: Notification)
-    {
-            let content = UNMutableNotificationContent()
-            content.title = notification.title
-            content.body = notification.body
-            content.sound    = .default
+    private func scheduleNotification(_ notification: Notification){
+        let content = UNMutableNotificationContent()
+        content.title = notification.title
+        content.body = notification.body
+        content.sound    = .default
 
-            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: notification.timeInterval, repeats: false)
+        let trigger: UNTimeIntervalNotificationTrigger
+        
+        if GlobalSettings.demoMode {
+            trigger = UNTimeIntervalNotificationTrigger(timeInterval: TimeInterval(timeIntervalDemoMode), repeats: false)
+        }else{
+           trigger = UNTimeIntervalNotificationTrigger(timeInterval: notification.timeInterval, repeats: false)
+        }
             
-            let request: UNNotificationRequest
             
-            switch notification.id {
-                case .hungry:
-                    request = UNNotificationRequest(identifier: "hungry", content: content, trigger: trigger)
-                case .thirsty:
-                    request = UNNotificationRequest(identifier: "thirsty", content: content, trigger: trigger)
-            }
+        let request: UNNotificationRequest
+        
+        switch notification.id {
+            case .hungry:
+                request = UNNotificationRequest(identifier: "hungry", content: content, trigger: trigger)
+            case .thirsty:
+                request = UNNotificationRequest(identifier: "thirsty", content: content, trigger: trigger)
+        }
 
-            notificationCenter.add(request) { error in
+        notificationCenter.add(request) { error in
 
-                guard error == nil else { return }
+            guard error == nil else { return }
 
-                print("Notification scheduled! --- ID = \(notification.id)")
-            }
+            print("Notification scheduled! --- ID = \(notification.id)")
+        }
     }
     
     /**

@@ -123,10 +123,10 @@ class FeedbackViewController : UILoggingViewController {
 
         if (type == ImageType.food){
             // food notification
-            notificationManager.setNotification(Notification(id: .hungry, title: "I'm hungry", body: "I need something healthy", timeInterval: timeIntervalFood)) 
+            notificationManager.setNotification(Notification(id: .hungry, title: "I'm hungry", body: "I need something healthy 🥦 🥕 🍆 🍎 🍌 🥬", timeInterval: timeIntervalFood))
         }else if(type == ImageType.water){
             // water notification
-            notificationManager.setNotification(Notification(id: .thirsty, title: "I'm thirsty", body: "I need water", timeInterval: timeIntervalWater))
+            notificationManager.setNotification(Notification(id: .thirsty, title: "I'm thirsty", body: "I need water 💦💦", timeInterval: timeIntervalWater))
         }
         
         
