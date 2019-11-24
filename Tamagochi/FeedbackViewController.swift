@@ -93,6 +93,7 @@ class FeedbackViewController : UILoggingViewController {
     func healthyImageRecognized(){
         
         //feedbackLabel.text = "Wow, \(recognizedObject) sounds great!"
+        statusLabel.text = "\(recognizedObject.capitalizingFirstLetter())s are awesome!"
         
         var type : ImageType!
         switch status {
@@ -130,15 +131,15 @@ class FeedbackViewController : UILoggingViewController {
         
         
         // print just for testing
-        print(coreDataAccess!.retrieveImages())
+        //print(coreDataAccess!.retrieveImages())
         
-        UIView.animate(withDuration: 0.2, delay: 0.3, options: [], animations: {
+        UIView.animate(withDuration: 0.2, delay: 0.4, options: [], animations: {
             
             self.bite1.alpha = 1
             
         }, completion: { (position) in
             
-            UIView.animate(withDuration: 0.2, delay: 0.3, options: [], animations: {
+            UIView.animate(withDuration: 0.2, delay: 0.4, options: [], animations: {
                 
                 self.bite2.alpha = 1
                 self.titleLabel.text = "Yummy!"
@@ -147,25 +148,25 @@ class FeedbackViewController : UILoggingViewController {
                 
             }, completion: { (position) in
                 
-                UIView.animate(withDuration: 0.2, delay: 0.3, options: [], animations: {
+                UIView.animate(withDuration: 0.2, delay: 0.4, options: [], animations: {
                     
                     self.bite3.alpha = 1
                     
                 }, completion: { (position) in
                     
-                    UIView.animate(withDuration: 0.2, delay: 0.3, options: [], animations: {
+                    UIView.animate(withDuration: 0.2, delay: 0.4, options: [], animations: {
                         
                         self.bite4.alpha = 1
                         
                     }, completion: { (position) in
                         
-                        UIView.animate(withDuration: 0.2, delay: 0.3, options: [], animations: {
+                        UIView.animate(withDuration: 0.2, delay: 0.4, options: [], animations: {
                             
                             self.imageViewer.alpha = 0
                             
                         }, completion: { (position) in
                             
-                            UIView.animate(withDuration: 0.2, delay: 0.3, options: [], animations: {
+                            UIView.animate(withDuration: 0.2, delay: 0.4, options: [], animations: {
 
                                 self.dismiss(animated: true, completion: {
                                     self.homeViewController?.updateBars()

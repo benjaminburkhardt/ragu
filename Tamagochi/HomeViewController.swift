@@ -31,6 +31,8 @@ class HomeViewController: UILoggingViewController, UINavigationControllerDelegat
     // CoreData
     var container: NSPersistentContainer!
     let persistentDataManager =  PersistentDataManager()
+
+    var tapticFeedback = UIImpactFeedbackGenerator()
     
     //    animations var
         var myScene = SCNScene()
@@ -92,6 +94,8 @@ class HomeViewController: UILoggingViewController, UINavigationControllerDelegat
     
     
     @IBAction func scanButton(_ sender: UIButton) {
+        
+        tapticFeedback.impactOccurred()
         
         imagePicker =  UIImagePickerController()
         imagePicker.delegate = self
