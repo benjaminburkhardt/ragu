@@ -171,7 +171,6 @@ class HomeViewController: UILoggingViewController, UINavigationControllerDelegat
         hungerBar.backgroundColor = #colorLiteral(red: 0, green: 0.7103458047, blue: 0, alpha: 1)// GlobalSettings.colors[3]
         
         view.backgroundColor = GlobalSettings.colors[0]
-        feedMeButton.backgroundColor = GlobalSettings.colors[4]
     }
     
     @objc func runContinuously(){

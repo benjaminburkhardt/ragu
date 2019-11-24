@@ -67,11 +67,18 @@ class LatestPhotosViewController: UITableViewController {
         if(elapsedDays == "1"){
             daysAgo = "day ago"
         }
+        
+        if(elapsedDays == "0"){
+            elapsedDays = String(persistentDataManager!.minutesBetween(start: images![indexPath.row].getDate(), end: Date()))
+            daysAgo = "minutes ago"
+        }
 
         cell.textLabel?.text = "\(images![indexPath.row].getDescr().capitalizingFirstLetter())"
         cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 20)
         cell.detailTextLabel?.text = "\(elapsedDays) \(daysAgo)"
         cell.detailTextLabel?.font = UIFont.systemFont(ofSize: 15)
+        cell.textLabel?.textColor = .black
+        cell.detailTextLabel?.textColor = .gray
         cell.imageView?.image = persistentDataManager?.retrieveImage(forKey: images![indexPath.row].getName())
         return cell
         
@@ -86,7 +93,9 @@ class LatestPhotosViewController: UITableViewController {
         label.frame = CGRect.init(x: 5, y: 5, width: headerView.frame.width-10, height: headerView.frame.height-10)
         label.text = "  History"
         label.font = UIFont.boldSystemFont(ofSize: 35.0)
+        label.textColor = .black
         label.textAlignment = .justified
+        label.backgroundColor = #colorLiteral(red: 0.1254901961, green: 0.8823529412, blue: 0.8196078431, alpha: 1)
 
         headerView.addSubview(label)
 
