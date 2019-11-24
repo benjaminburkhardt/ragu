@@ -108,13 +108,22 @@ class FeedbackViewController : UILoggingViewController {
             print(error)
         }
         
-        // TODO: @Alessio - set timer for notification in 4 hours
-        // no notifacitons between 9pm and 8am
+        let notificationManager = NotificationManager()
+
+        let now = Date()
+        
+        let nextDateWater = now + TimeInterval(notificationManager.waterInterval)
+        let nextDateFood = now + TimeInterval(notificationManager.foodInterval)
+        
+        let timeIntervalWater = nextDateWater.timeIntervalSince(now)
+        let timeIntervalFood = nextDateFood.timeIntervalSince(now)
 
         if (type == ImageType.food){
             // food notification
+            notificationManager.setNotification(Notification(id: .hungry, title: "I'm hungry", body: "I need something healthy", timeInterval: timeIntervalFood)) 
         }else if(type == ImageType.water){
             // water notification
+            notificationManager.setNotification(Notification(id: .thirsty, title: "I'm thirsty", body: "I need water", timeInterval: timeIntervalWater))
         }
         
         

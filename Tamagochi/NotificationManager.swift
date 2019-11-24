@@ -13,6 +13,12 @@ class NotificationManager: NSObject, UNUserNotificationCenterDelegate{
     
     let notificationCenter = UNUserNotificationCenter.current()
     
+    // Seconds from last pic to send notification
+    let foodInterval = 14400  // 4 hours
+    let waterInterval = 7200 // 2 hours
+    
+    let hourStartScheduleNotification = 8 //am
+    let hourFinishScheduleNotification = 20 //pm
     /**
      Ask permission to send local notifications
      */
@@ -78,6 +84,20 @@ class NotificationManager: NSObject, UNUserNotificationCenterDelegate{
         schedule(notification: notification)
     }
     
+    
+    
+    /**
+     Send notification between 8am to 21pm. Notification after 21pm will be schedule at 8am
+     */
+    func scheduleNotificationByTimeRange(nowDate: Date, nextDate: Date, notification: Notification){
+            
+    }
+    
+    
+    
+    
+    
+    
     /**
      Remove notifications scheduled with specific ids
       - Parameters _ notification: Notification that will be scheduled
@@ -102,7 +122,7 @@ struct Notification{
     let id: NotificationType
     let title: String
     let body: String
-    let timeInterval: TimeInterval
+    var timeInterval: TimeInterval
 }
 
 enum NotificationType{
