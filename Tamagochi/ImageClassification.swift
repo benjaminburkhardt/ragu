@@ -100,11 +100,9 @@ class ImageClassification : UIViewController {
                 print("Highest confidence: " , confidence)
                 
                 self.result = recognized
-                self.controllerToNotify.updateStatus(status: ImageStatus.classified)
-                self.controllerToNotify.updateRecognizedObject(recognizedObject: recognized[0])
+                //self.controllerToNotify.updateStatus(status: ImageStatus.classified)
+                //self.controllerToNotify.updateRecognizedObject(recognizedObject: recognized[0])
                 
-                
-                // TODO:
                 
                 let veggies = [
                     "carrot",
