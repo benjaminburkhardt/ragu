@@ -86,7 +86,7 @@ class HomeViewController: UILoggingViewController, UINavigationControllerDelegat
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
             
             // Check if it's the first launch of the app to show the Tutorial
-            let launchedBefore = UserDefaults.standard.bool(forKey: "launchedBefore")
+            let launchedBefore = false // UserDefaults.standard.bool(forKey: "launchedBefore")
             if launchedBefore  {
                 print("Not first launch.")
             } else {
